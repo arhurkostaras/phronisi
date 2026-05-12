@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OSFI E-23 Readiness Diagnostic · Phronisi.</title>
+<meta name="description" content="A confidential 8-dimension self-assessment of your institution's readiness for OSFI Guideline E-23 (Model Risk Management). Score in 5 minutes, receive a maturity tier, three gaps, and recommended next actions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B0E12;
+  --ink-2: #14181F;
+  --ink-3: #1C2128;
+  --line: rgba(212, 188, 138, 0.14);
+  --line-strong: rgba(212, 188, 138, 0.30);
+  --cream: #F1EADC;
+  --cream-text: #1A1815;
+  --gold: #C9A86A;
+  --gold-bright: #E0BE7E;
+  --gold-deep: #8A6F3F;
+  --rust: #A85638;
+  --rust-light: #C57954;
+  --bone: #D9D0BA;
+  --mute: #7C8492;
+  --mute-2: #A4ACBA;
+  --green: #6FCF97;
+  --amber: #E0BE7E;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ====== Top bar ====== */
+.topbar {
+  padding: 22px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink-2);
+}
+.topbar .brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 1;
+}
+.topbar .brand .dot { color: var(--gold); font-style: italic; }
+.topbar .brand a { color: var(--cream); text-decoration: none; }
+.topbar .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.topbar .meta span { color: var(--gold); }
+
+/* ====== Hero ====== */
+.hero {
+  padding: 80px 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 70% 30%, rgba(201, 168, 106, 0.10), transparent 60%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 2; }
+.hero .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.hero p {
+  font-size: 17px;
+  color: var(--bone);
+  line-height: 1.65;
+  max-width: 780px;
+  font-weight: 300;
+}
+.hero p strong { color: var(--cream); font-weight: 500; }
+.hero p em { color: var(--gold-bright); font-style: italic; font-family: 'Fraunces', serif; }
+
+.hero-strip {
+  margin-top: 36px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.hero-strip .cell strong {
+  display: block;
+  color: var(--gold);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+  font-weight: 500;
+  font-family: 'Fraunces', serif;
+  text-transform: none;
+}
+
+/* ====== Sections ====== */
+section.dim {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+}
+.dim-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.dim-head .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.dim-head h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-variation-settings: "opsz" 80, "WONK" 1;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--cream);
+}
+.dim-head h2 em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+}
+.dim p.lead {
+  font-size: 14.5px;
+  color: var(--bone);
+  margin-bottom: 22px;
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+.q {
+  margin-bottom: 24px;
+  padding: 18px 22px;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+}
+.q-text {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  color: var(--cream);
+  line-height: 1.4;
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 36";
+}
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: var(--bone);
+}
+.opt:hover {
+  background: rgba(201, 168, 106, 0.06);
+  border-color: var(--gold-deep);
+}
+.opt input { display: none; }
+.opt .marker {
+  width: 14px; height: 14px;
+  border: 1px solid var(--gold-deep);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.opt.selected {
+  background: rgba(201, 168, 106, 0.12);
+  border-color: var(--gold);
+  color: var(--cream);
+}
+.opt.selected .marker {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.opt .lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-right: 8px;
+}
+
+/* ====== Score panel ====== */
+.score-section {
+  padding: 64px 0 100px;
+  background: var(--ink-2);
+  border-top: 2px solid var(--gold);
+}
+.score-section .container { max-width: 1100px; }
+
+.score-panel {
+  display: none;
+  animation: fadeUp 0.6s ease;
+}
+.score-panel.visible { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.score-hero {
+  text-align: center;
+  padding: 32px 0;
+  margin-bottom: 32px;
+}
+.score-hero .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.score-hero .total {
+  font-family: 'Fraunces', serif;
+  font-size: 120px;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  line-height: 1;
+  font-weight: 500;
+}
+.score-hero .total .denom {
+  color: var(--gold-deep);
+  font-size: 60px;
+  font-style: italic;
+  margin-left: 6px;
+}
+.score-hero .tier {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  font-style: italic;
+  margin-top: 12px;
+  color: var(--gold-bright);
+}
+.score-hero .tier-desc {
+  font-size: 15px;
+  color: var(--bone);
+  margin-top: 12px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.55;
+}
+
+.dim-bars {
+  display: grid;
+  gap: 12px;
+  margin: 36px 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.bar-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 60px;
+  gap: 16px;
+  align-items: center;
+}
+.bar-row .name {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  color: var(--cream);
+  font-variation-settings: "opsz" 36";
+}
+.bar-track {
+  height: 8px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright));
+  transition: width 0.8s ease;
+}
+.bar-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  text-align: right;
+  letter-spacing: 0.08em;
+}
+
+.gaps {
+  margin-top: 40px;
+  padding: 32px;
+  background: var(--ink);
+  border-left: 3px solid var(--rust);
+}
+.gaps h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  margin-bottom: 18px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  color: var(--cream);
+}
+.gaps h3 em { font-style: italic; color: var(--rust-light); font-variation-settings: "opsz" 48, "SOFT" 100, "WONK" 1; }
+.gaps ol {
+  list-style: none;
+  counter-reset: gap-counter;
+}
+.gaps ol li {
+  counter-increment: gap-counter;
+  padding-left: 36px;
+  position: relative;
+  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--bone);
+}
+.gaps ol li::before {
+  content: counter(gap-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--rust-light);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+.gaps ol li strong { color: var(--cream); display: block; font-family: 'Fraunces', serif; font-size: 16px; margin-bottom: 4px; }
+
+.cta-band {
+  margin-top: 48px;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--ink), var(--ink-3));
+  border: 1px solid var(--gold);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.cta-band .left h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-variation-settings: "opsz" 80, "WONK" 1;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+.cta-band .left h3 em { font-style: italic; color: var(--gold-bright); font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1; }
+.cta-band .left p {
+  font-size: 15px;
+  color: var(--bone);
+  line-height: 1.6;
+}
+.cta-band .left p em { color: var(--gold-bright); font-style: italic; font-family: 'Fraunces', serif; }
+.cta-band .right {
+  text-align: right;
+}
+.cta-band .right a {
+  display: inline-block;
+  padding: 16px 28px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+.cta-band .right a:hover { background: var(--gold-bright); }
+.cta-band .right .sub {
+  display: block;
+  margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--mute);
+  text-transform: uppercase;
+}
+
+.calc-btn {
+  display: block;
+  width: 100%;
+  padding: 22px;
+  margin: 40px 0;
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.calc-btn:hover { background: var(--gold-bright); }
+.calc-btn:disabled { background: var(--mute); cursor: not-allowed; }
+
+.progress {
+  position: sticky;
+  top: 0;
+  background: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  z-index: 50;
+  margin: 0 -32px;
+}
+.progress-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.progress-bar {
+  flex-grow: 1;
+  height: 4px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.35s ease;
+}
+.progress-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  white-space: nowrap;
+}
+.progress-label strong { color: var(--gold); font-weight: 500; }
+
+footer.foot {
+  padding: 32px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex;
+  justify-content: space-between;
+  background: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .options { grid-template-columns: 1fr; }
+  .hero-strip { grid-template-columns: 1fr 1fr; }
+  .bar-row { grid-template-columns: 1fr; gap: 6px; }
+  .bar-row .bar-score { text-align: left; }
+  .cta-band { grid-template-columns: 1fr; }
+  .cta-band .right { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><a href="https://phronisi.app">Phronisi<span class="dot">.</span></a></div>
+  <div class="meta">§ Lead Diagnostic · <span>OSFI E-23 Readiness</span></div>
+</div>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">§ OSFI Guideline E-23 · Model Risk Management · Effective 1 May 2027</div>
+    <h1>Are you <em>ready</em> for E-23?</h1>
+    <p>
+      OSFI's revised Guideline E-23 expands model-risk management to include <strong>all analytical methods affecting decisions</strong> &mdash; AI, machine learning, and qualitative models, not only traditional credit and capital models. Most federally regulated financial institutions are running multiple AI models today without the governance E-23 will require. This is a confidential 5-minute self-assessment across eight dimensions. <em>No data is stored. Nothing is sent anywhere.</em> Score yourself honestly.
+    </p>
+
+    <div class="hero-strip">
+      <div class="cell"><strong>8 dimensions</strong>Self-assessment</div>
+      <div class="cell"><strong>~5 min</strong>To complete</div>
+      <div class="cell"><strong>0-24 score</strong>+ maturity tier</div>
+      <div class="cell"><strong>3 gaps</strong>+ recommended actions</div>
+    </div>
+  </div>
+</section>
+
+<div class="progress" id="progress" style="display:none;">
+  <div class="progress-inner">
+    <div class="progress-label"><strong id="answeredCount">0</strong> / 8 dimensions answered</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
+    <div class="progress-label">Continue scrolling &darr;</div>
+  </div>
+</div>
+
+<form id="diagnostic">
+<div class="container">
+
+  <!-- ============ DIMENSION 01 ============ -->
+  <section class="dim" data-dim="01">
+    <div class="dim-head">
+      <div class="num">/ 01</div>
+      <h2><em>Governance</em> &amp; accountability</h2>
+    </div>
+    <p class="lead">E-23 requires named, documented accountability for model risk at the board level and below. Has your institution assigned and documented who owns model risk &mdash; including AI/ML models?</p>
+    <div class="q">
+      <div class="q-text">Does a named senior executive (CRO, CFO, or equivalent) hold documented accountability for model risk &mdash; including AI/ML models &mdash; with explicit reporting to the board?</div>
+      <div class="options" data-question="01">
+        <label class="opt" data-score="0"><input type="radio" name="q01"><span class="marker"></span><span class="lbl">No</span><span>No formal accountability assigned</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q01"><span class="marker"></span><span class="lbl">Partial</span><span>Assigned but not for AI/ML</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q01"><span class="marker"></span><span class="lbl">Yes</span><span>Named, documented, board-reported</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 02 ============ -->
+  <section class="dim" data-dim="02">
+    <div class="dim-head">
+      <div class="num">/ 02</div>
+      <h2>Model <em>inventory</em> &amp; identification</h2>
+    </div>
+    <p class="lead">E-23 requires a complete inventory of all models in use, with each model classified by risk tier. The expanded scope explicitly captures AI, ML, and qualitative models &mdash; not only traditional credit/capital models.</p>
+    <div class="q">
+      <div class="q-text">Does your institution maintain a complete, current model inventory that captures AI/ML models alongside traditional models, with each entry tier-rated for risk?</div>
+      <div class="options" data-question="02">
+        <label class="opt" data-score="0"><input type="radio" name="q02"><span class="marker"></span><span class="lbl">No</span><span>No inventory, or covers only credit/capital models</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q02"><span class="marker"></span><span class="lbl">Partial</span><span>Inventory exists, AI/ML coverage incomplete</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q02"><span class="marker"></span><span class="lbl">Yes</span><span>Complete inventory including all AI/ML, tier-rated</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 03 ============ -->
+  <section class="dim" data-dim="03">
+    <div class="dim-head">
+      <div class="num">/ 03</div>
+      <h2>Risk-tier <em>methodology</em></h2>
+    </div>
+    <p class="lead">E-23 requires a documented methodology for rating each model's materiality and risk &mdash; driving the depth of validation, review frequency, and governance attention each model receives.</p>
+    <div class="q">
+      <div class="q-text">Is there a written, board-approved methodology for tiering models by materiality and risk, with the tier of each model driving its validation depth and review cadence?</div>
+      <div class="options" data-question="03">
+        <label class="opt" data-score="0"><input type="radio" name="q03"><span class="marker"></span><span class="lbl">No</span><span>No formal tier methodology</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q03"><span class="marker"></span><span class="lbl">Partial</span><span>Informal tiering, not consistently applied</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q03"><span class="marker"></span><span class="lbl">Yes</span><span>Documented, board-approved, drives controls</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 04 ============ -->
+  <section class="dim" data-dim="04">
+    <div class="dim-head">
+      <div class="num">/ 04</div>
+      <h2>Validation <em>processes</em></h2>
+    </div>
+    <p class="lead">E-23 requires effective challenge through validation &mdash; including conceptual soundness review, outcomes analysis, and ongoing performance monitoring. AI/ML models need validation approaches that handle non-deterministic outputs.</p>
+    <div class="q">
+      <div class="q-text">Are AI/ML models validated through conceptual review, outcomes analysis, and challenge testing &mdash; with methods that explicitly address non-deterministic and learning-based behaviour?</div>
+      <div class="options" data-question="04">
+        <label class="opt" data-score="0"><input type="radio" name="q04"><span class="marker"></span><span class="lbl">No</span><span>No formal validation of AI/ML models</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q04"><span class="marker"></span><span class="lbl">Partial</span><span>Validation exists, ML-specific gaps remain</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q04"><span class="marker"></span><span class="lbl">Yes</span><span>Full validation including ML-specific tests</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 05 ============ -->
+  <section class="dim" data-dim="05">
+    <div class="dim-head">
+      <div class="num">/ 05</div>
+      <h2><em>Independent</em> review</h2>
+    </div>
+    <p class="lead">E-23 emphasises effective challenge from a function independent of the model developers and users &mdash; with sufficient AI/ML technical capability to provide meaningful scrutiny, not just procedural compliance.</p>
+    <div class="q">
+      <div class="q-text">Is there an independent review function with both organisational distance from model developers and technical capability to challenge AI/ML model design and behaviour?</div>
+      <div class="options" data-question="05">
+        <label class="opt" data-score="0"><input type="radio" name="q05"><span class="marker"></span><span class="lbl">No</span><span>No independent review, or review lacks AI capability</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q05"><span class="marker"></span><span class="lbl">Partial</span><span>Independent in name, capability gaps in practice</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q05"><span class="marker"></span><span class="lbl">Yes</span><span>Independent + AI-technically credible</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 06 ============ -->
+  <section class="dim" data-dim="06">
+    <div class="dim-head">
+      <div class="num">/ 06</div>
+      <h2>Ongoing <em>monitoring</em> &amp; change</h2>
+    </div>
+    <p class="lead">E-23 requires continuous monitoring of model performance, drift detection, and disciplined change management. For AI/ML models, monitoring must capture performance drift, data drift, and behavioural change between versions.</p>
+    <div class="q">
+      <div class="q-text">Are AI/ML models continuously monitored for performance drift, data drift, and behavioural change, with formal change-control gating retraining and redeployment?</div>
+      <div class="options" data-question="06">
+        <label class="opt" data-score="0"><input type="radio" name="q06"><span class="marker"></span><span class="lbl">No</span><span>No continuous monitoring or change control</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q06"><span class="marker"></span><span class="lbl">Partial</span><span>Monitoring exists, change control informal</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q06"><span class="marker"></span><span class="lbl">Yes</span><span>Continuous monitoring + formal change control</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 07 ============ -->
+  <section class="dim" data-dim="07">
+    <div class="dim-head">
+      <div class="num">/ 07</div>
+      <h2>Documentation <em>standards</em></h2>
+    </div>
+    <p class="lead">E-23 requires documentation sufficient for an independent reviewer to understand each model's purpose, design, data, limitations, and use. For AI/ML, this includes data lineage, training methodology, and limitation statements.</p>
+    <div class="q">
+      <div class="q-text">Is every AI/ML model documented to a standard that allows an independent reviewer to understand purpose, design, data, limitations, and operational use &mdash; without consulting the development team?</div>
+      <div class="options" data-question="07">
+        <label class="opt" data-score="0"><input type="radio" name="q07"><span class="marker"></span><span class="lbl">No</span><span>Documentation absent or developer-dependent</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q07"><span class="marker"></span><span class="lbl">Partial</span><span>Documented inconsistently across models</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q07"><span class="marker"></span><span class="lbl">Yes</span><span>Standard documentation across all AI/ML models</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSION 08 ============ -->
+  <section class="dim" data-dim="08">
+    <div class="dim-head">
+      <div class="num">/ 08</div>
+      <h2><em>AI/ML-specific</em> provisions</h2>
+    </div>
+    <p class="lead">E-23's revisions are particularly attentive to AI/ML risk: explainability, bias and fairness assessment, generative AI controls, and the boundary between human judgment and model output. This is the dimension institutions most often underestimate.</p>
+    <div class="q">
+      <div class="q-text">Has your institution formally addressed AI-specific risks &mdash; explainability requirements, bias and fairness testing, generative AI controls, and human-in-the-loop boundaries for each material AI/ML model?</div>
+      <div class="options" data-question="08">
+        <label class="opt" data-score="0"><input type="radio" name="q08"><span class="marker"></span><span class="lbl">No</span><span>AI-specific risks not formally addressed</span></label>
+        <label class="opt" data-score="1.5"><input type="radio" name="q08"><span class="marker"></span><span class="lbl">Partial</span><span>Some AI risks addressed, framework incomplete</span></label>
+        <label class="opt" data-score="3"><input type="radio" name="q08"><span class="marker"></span><span class="lbl">Yes</span><span>Full AI risk framework, applied per model</span></label>
+      </div>
+    </div>
+  </section>
+
+  <button type="button" class="calc-btn" id="calcBtn" disabled>Calculate readiness score →</button>
+
+</div>
+</form>
+
+<!-- ============ SCORE RESULT ============ -->
+<section class="score-section" id="resultSection">
+  <div class="container">
+    <div class="score-panel" id="scorePanel">
+
+      <div class="score-hero">
+        <div class="label">§ Your E-23 readiness score</div>
+        <div class="total"><span id="totalScore">0</span><span class="denom">/24</span></div>
+        <div class="tier" id="tierLabel">—</div>
+        <div class="tier-desc" id="tierDesc">—</div>
+      </div>
+
+      <div class="dim-bars" id="dimBars">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="gaps">
+        <h3>Your <em>top three</em> gaps to close</h3>
+        <ol id="gapsList">
+          <!-- Populated by JS -->
+        </ol>
+      </div>
+
+      <div class="cta-band">
+        <div class="left">
+          <h3>Want a <em>structured plan</em> to close the gaps?</h3>
+          <p>Phronisi offers a <em>90-minute E-23 readiness review</em> &mdash; complimentary, no obligation. We will walk through your gap profile, prioritise remediation, and outline what a focused readiness sprint would look like for your institution. Booking Q3–Q4 2026.</p>
+        </div>
+        <div class="right">
+          <a href="mailto:arthur@phronisi.app?subject=E-23%20Readiness%20Review%20-%20Booking%20Request">Book a session</a>
+          <span class="sub">arthur@phronisi.app  ·  90 min  ·  no obligation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div>Phronisi<span style="color:var(--gold);">.</span>  ·  AI Specialist · Indigenous &amp; Multi-industry · Finance · Operations · Strategy</div>
+  <div>Confidential self-assessment  ·  No data stored</div>
+</footer>
+
+<script>
+const DIM_NAMES = {
+  '01': 'Governance & accountability',
+  '02': 'Model inventory & identification',
+  '03': 'Risk-tier methodology',
+  '04': 'Validation processes',
+  '05': 'Independent review',
+  '06': 'Ongoing monitoring & change',
+  '07': 'Documentation standards',
+  '08': 'AI/ML-specific provisions',
+};
+
+const GAP_ACTIONS = {
+  '01': 'Assign and document board-level accountability for model risk &mdash; including AI/ML &mdash; with named reporting lines and a quarterly board reporting cadence.',
+  '02': 'Build a single source-of-truth model inventory capturing all AI/ML models alongside traditional models, with each entry tier-rated by materiality.',
+  '03': 'Adopt a written, board-approved tier methodology that drives validation depth and review frequency. The tier determines the controls, not the other way around.',
+  '04': 'Stand up AI/ML-specific validation: conceptual soundness, outcomes analysis, drift testing, and challenge against alternative methods. Document the validation playbook.',
+  '05': 'Build or buy independent-review capability with credible AI/ML technical depth. Procedural independence without technical depth is not effective challenge.',
+  '06': 'Deploy continuous monitoring for performance drift, data drift, and behavioural change. Gate retraining and redeployment through formal change control.',
+  '07': 'Adopt a standard documentation template every AI/ML model must satisfy before deployment. The test: would an independent reviewer understand it without consulting the team?',
+  '08': 'Build the AI-specific risk overlay: explainability requirements, bias and fairness testing, generative AI controls, human-in-the-loop boundaries. Apply per model based on tier.',
+};
+
+const TIERS = [
+  { min: 0, max: 6,  label: 'Emerging',   desc: 'Significant work required ahead of the 1 May 2027 effective date. The institution is not yet positioned to demonstrate E-23 compliance for AI/ML models, and most dimensions need foundational work.' },
+  { min: 7, max: 12, label: 'Developing', desc: 'Foundations in place for traditional model risk; AI/ML coverage and several E-23 dimensions need targeted strengthening. A 6-9 month structured remediation programme would close the critical gaps.' },
+  { min: 13, max: 18, label: 'Mature',    desc: 'Core E-23 dimensions are well established, with focused gaps in one or two areas &mdash; typically AI/ML-specific provisions or independent-review technical capability. Targeted reinforcement should achieve full readiness.' },
+  { min: 19, max: 24, label: 'Advanced',  desc: 'The institution is positioned to demonstrate E-23 compliance for AI/ML models with confidence. Remaining work is incremental &mdash; refinement of monitoring, documentation, and AI-specific controls. Full readiness is achievable within months.' },
+];
+
+// Option click handler
+document.querySelectorAll('.options').forEach(group => {
+  group.querySelectorAll('.opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      opt.querySelector('input').checked = true;
+      updateProgress();
+    });
+  });
+});
+
+function getAnswers() {
+  const answers = {};
+  document.querySelectorAll('.options').forEach(group => {
+    const dim = group.dataset.question;
+    const selected = group.querySelector('.opt.selected');
+    if (selected) answers[dim] = parseFloat(selected.dataset.score);
+  });
+  return answers;
+}
+
+function updateProgress() {
+  const answers = getAnswers();
+  const count = Object.keys(answers).length;
+  const progressEl = document.getElementById('progress');
+  const fillEl = document.getElementById('progressFill');
+  const countEl = document.getElementById('answeredCount');
+  if (count > 0) {
+    progressEl.style.display = 'block';
+    fillEl.style.width = (count / 8 * 100) + '%';
+    countEl.textContent = count;
+  }
+  document.getElementById('calcBtn').disabled = count < 8;
+}
+
+function calculateScore() {
+  const answers = getAnswers();
+  const total = Object.values(answers).reduce((s, v) => s + v, 0);
+  const tier = TIERS.find(t => total >= t.min && total <= t.max);
+
+  // Score hero
+  document.getElementById('totalScore').textContent = total.toFixed(1).replace('.0', '');
+  document.getElementById('tierLabel').textContent = tier.label;
+  document.getElementById('tierDesc').textContent = tier.desc;
+
+  // Dimension bars
+  const barsEl = document.getElementById('dimBars');
+  barsEl.innerHTML = '';
+  Object.entries(answers).forEach(([dim, score]) => {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.innerHTML = `
+      <div class="name">${dim} · ${DIM_NAMES[dim]}</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 0%;" data-target="${score / 3 * 100}"></div></div>
+      <div class="bar-score">${score} / 3</div>
+    `;
+    barsEl.appendChild(row);
+  });
+
+  // Top 3 gaps — sorted by lowest score
+  const gaps = Object.entries(answers)
+    .sort(([,a], [,b]) => a - b)
+    .slice(0, 3)
+    .map(([dim, score]) => ({ dim, score, name: DIM_NAMES[dim], action: GAP_ACTIONS[dim] }));
+
+  const gapsEl = document.getElementById('gapsList');
+  gapsEl.innerHTML = '';
+  gaps.forEach(g => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${g.name} (${g.score}/3)</strong>${g.action}`;
+    gapsEl.appendChild(li);
+  });
+
+  document.getElementById('scorePanel').classList.add('visible');
+  setTimeout(() => {
+    document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      document.querySelectorAll('.bar-fill').forEach(b => {
+        b.style.width = b.dataset.target + '%';
+      });
+    }, 400);
+  }, 50);
+}
+
+document.getElementById('calcBtn').addEventListener('click', calculateScore);
+</script>
+
+</body>
+</html>

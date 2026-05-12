@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phronisi — AI Specialist · Indigenous &amp; Multi-industry · Finance · Operations · Strategy</title>
+<meta name="description" content="Phronisi. AI counsel for Indigenous and multi-industry institutions across finance, operations, and strategy. From the Greek φρόνηση — Aristotle's word for practical wisdom. Founded by Arthur Kostaras." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B0E12;
+  --ink-2: #14181F;
+  --ink-3: #1C2128;
+  --line: rgba(212, 188, 138, 0.14);
+  --line-strong: rgba(212, 188, 138, 0.30);
+  --cream: #F1EADC;
+  --cream-2: #E6DDC7;
+  --cream-text: #1A1815;
+  --gold: #C9A86A;
+  --gold-bright: #E0BE7E;
+  --gold-deep: #8A6F3F;
+  --rust: #A85638;
+  --bone: #D9D0BA;
+  --mute: #7C8492;
+  --mute-2: #A4ACBA;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ====== Typography ====== */
+.serif { font-family: 'Fraunces', serif; font-variation-settings: "SOFT" 30, "WONK" 0; }
+.mono  { font-family: 'JetBrains Mono', monospace; font-feature-settings: "tnum" 1, "zero" 1; }
+
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; }
+h1 { font-size: clamp(56px, 9vw, 152px); font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1; }
+h2 { font-size: clamp(36px, 5.4vw, 76px); font-variation-settings: "opsz" 80, "SOFT" 30; }
+h3 { font-size: clamp(22px, 2.4vw, 32px); font-variation-settings: "opsz" 48; line-height: 1.18; }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* ====== Layout ====== */
+.container { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
+section { padding: 140px 0; position: relative; }
+
+/* ====== Nav ====== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(11, 14, 18, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 16px;
+}
+.brand .mark {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.brand .dot { color: var(--gold); font-style: italic; }
+.brand .tagline-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 400;
+  line-height: 1.4;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+.brand small {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 400;
+}
+.nav-links { display: flex; gap: 38px; align-items: center; }
+.nav-links a {
+  color: var(--bone);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.25s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.cta {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 11px 22px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  display: inline-block;
+  border: 1px solid var(--gold);
+  text-decoration: none;
+}
+.cta:hover { background: transparent; color: var(--gold); }
+
+/* ====== Hero ====== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 75% 30%, rgba(201, 168, 106, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(168, 86, 56, 0.08), transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212, 188, 138, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 188, 138, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
+}
+.hero-inner { position: relative; z-index: 2; }
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 64px;
+  padding-top: 40px;
+}
+.hero-meta .left {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute-2);
+}
+.hero-meta .left span { color: var(--gold); }
+.hero-meta .right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  text-align: right;
+}
+h1.hero-title {
+  letter-spacing: -0.045em;
+  margin-bottom: 56px;
+  max-width: 1280px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: end;
+  padding-top: 28px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-lede {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--bone);
+  max-width: 640px;
+  font-weight: 300;
+}
+.hero-lede strong { color: var(--cream); font-weight: 500; }
+.hero-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-end;
+}
+.hero-cta-row .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.hero-cta-row a.big {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 4px;
+  font-variation-settings: "opsz" 48, "SOFT" 50;
+  transition: all 0.25s ease;
+}
+.hero-cta-row a.big:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Etymology Plaque (tripartite — Mark · Specialty · Practice) ====== */
+.etymology {
+  background: var(--ink-2);
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0 52px;
+  position: relative;
+}
+.etymology::before {
+  content: "§ PHRONISI · THE PRACTICE";
+  position: absolute;
+  top: -1px;
+  left: 48px;
+  background: var(--ink);
+  padding: 6px 14px 6px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  border-top: none;
+}
+.etym-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+  padding-top: 14px;
+  position: relative;
+}
+.etym-grid::before,
+.etym-grid::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+.etym-grid::before { left: calc(33.33% - 28px); }
+.etym-grid::after  { left: calc(66.66% - 28px); }
+.etym-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.etym-cell .head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.etym-cell .head .ord { color: var(--mute-2); margin-right: 10px; }
+.etym-cell .title {
+  font-family: 'Fraunces', serif;
+  font-size: 34px;
+  font-variation-settings: "opsz" 80, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  line-height: 1;
+}
+.etym-cell .title .dot { color: var(--gold); font-style: italic; }
+.etym-cell .title em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+}
+.etym-cell .meta-row {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.etym-cell .greek {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--gold-deep);
+  line-height: 1;
+  font-variation-settings: "opsz" 36";
+}
+.etym-cell .pronounce {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--mute);
+}
+.etym-cell .desc {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--bone);
+  font-variation-settings: "opsz" 36, "SOFT" 30";
+  margin-top: 6px;
+}
+.etym-cell .desc em {
+  color: var(--gold-bright);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 100, "WONK" 1;
+}
+.etym-cell .desc strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ====== Hero Tagline Feature ====== */
+.hero-tagline-feature {
+  margin: 36px 0 8px;
+  padding: 28px 0 30px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(24px, 3.4vw, 40px);
+  color: #FFFFFF;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  font-variation-settings: "opsz" 80, "SOFT" 30, "WONK" 1;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+}
+.hero-tagline-feature .line {
+  display: block;
+}
+.hero-tagline-feature .line + .line {
+  margin-top: 4px;
+}
+.hero-tagline-feature .sep {
+  color: var(--gold);
+  margin: 0 6px;
+  font-style: italic;
+  font-weight: 400;
+}
+.hero-tagline-feature .amp {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  margin: 0 2px;
+}
+.hero-tagline-feature::before {
+  content: "§ THE LOCKED TAGLINE";
+  position: absolute;
+  top: -8px;
+  right: 0;
+  background: var(--ink);
+  padding: 2px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* ====== Ticker ====== */
+.ticker {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+  background: var(--ink-2);
+  overflow: hidden;
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  gap: 56px;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  width: max-content;
+}
+.ticker-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bone);
+  display: flex; align-items: center; gap: 14px;
+  flex-shrink: 0;
+}
+.ticker-item .val { color: var(--gold); font-size: 14px; }
+.ticker-item::after { content: "✦"; color: var(--gold-deep); margin-left: 40px; }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ====== Proposition ====== */
+.proposition {
+  background: var(--cream);
+  color: var(--cream-text);
+  padding: 160px 0;
+  position: relative;
+}
+.proposition::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(168, 86, 56, 0.05), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(138, 111, 63, 0.06), transparent 40%);
+  pointer-events: none;
+}
+.proposition .container { position: relative; z-index: 2; }
+.proposition .eyebrow { color: var(--rust); }
+.prop-headline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(34px, 4.4vw, 62px);
+  line-height: 1.12;
+  font-variation-settings: "opsz" 80, "SOFT" 30, "WONK" 0;
+  letter-spacing: -0.025em;
+  max-width: 1100px;
+  margin: 32px 0 0;
+}
+.prop-headline em {
+  font-style: italic;
+  color: var(--rust);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+}
+.prop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 96px;
+  border-top: 1px solid rgba(26, 24, 21, 0.18);
+  padding-top: 56px;
+}
+.prop-cell .num {
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-variation-settings: "opsz" 80, "WONK" 1;
+  color: var(--rust);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.prop-cell .num sup { font-size: 24px; vertical-align: top; margin-left: 2px; opacity: 0.7; }
+.prop-cell .lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(26, 24, 21, 0.5);
+  margin: 14px 0 10px;
+}
+.prop-cell p { font-size: 16px; line-height: 1.5; color: rgba(26, 24, 21, 0.78); }
+
+/* ====== Section head ====== */
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+  border-top: 1px solid var(--line-strong);
+  padding-top: 56px;
+}
+.section-head .index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.section-head .index .num { color: var(--mute-2); }
+.section-head .title {
+  font-size: clamp(40px, 5vw, 76px);
+  margin: 10px 0 18px;
+}
+.section-head .title em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+}
+.section-head .blurb {
+  font-size: 18px;
+  color: var(--mute-2);
+  font-weight: 300;
+  max-width: 580px;
+  line-height: 1.5;
+}
+
+/* ====== Services ====== */
+.services-list { border-top: 1px solid var(--line); }
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1.2fr 2fr 1fr;
+  gap: 32px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  position: relative;
+  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-row:hover { padding-left: 20px; }
+.service-row::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-row:hover::before { transform: scaleY(1); }
+.service-row .ix {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--mute);
+  letter-spacing: 0.1em;
+}
+.service-row .name {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.service-row .name em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 48, "SOFT" 100, "WONK" 1;
+}
+.service-row .desc {
+  font-size: 15.5px;
+  color: var(--mute-2);
+  line-height: 1.55;
+}
+.service-row .scope {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.service-row .scope .duration { display: block; }
+.service-row .scope .price {
+  display: block;
+  color: var(--cream);
+  font-size: 14px;
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+}
+
+/* ====== Industries ====== */
+.industries { background: var(--ink); position: relative; }
+.industries::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 240px;
+  background: radial-gradient(ellipse 70% 100% at 30% 0%, rgba(168, 86, 56, 0.05), transparent);
+  pointer-events: none;
+}
+.industries .container { position: relative; }
+.industry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line);
+}
+.industry-card {
+  padding: 36px 40px 32px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.industry-card:hover { background: rgba(201, 168, 106, 0.035); }
+.industry-card .idx {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.industry-card h3 {
+  font-size: 27px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  margin-bottom: 14px;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
+}
+.industry-card .prov {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 48, "SOFT" 100, "WONK" 1;
+  line-height: 1.42;
+  margin-bottom: 22px;
+}
+.industry-card ul {
+  list-style: none;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+.industry-card ul li {
+  font-size: 14px;
+  color: var(--bone);
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 7px;
+}
+.industry-card ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold-deep);
+}
+.industry-card .metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.industry-card .metric strong {
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  text-align: right;
+  text-transform: none;
+}
+
+/* ====== Engagements ====== */
+.engagements { background: var(--ink-2); }
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+.case-card {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  padding: 40px 36px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+.case-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px -20px rgba(201, 168, 106, 0.18);
+}
+.case-card .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.case-card .tag .status {
+  color: var(--bone);
+  font-size: 10px;
+}
+.case-card .tag .status::before {
+  content: "●";
+  color: #6FCF97;
+  margin-right: 6px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+.case-card .tag .status.prep::before { color: var(--gold); }
+.case-card .tag .status.scoping::before { color: var(--rust); }
+.case-card h3 {
+  font-size: 28px;
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+}
+.case-card h3 em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 48, "SOFT" 100, "WONK" 1;
+}
+.case-card .client {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute-2);
+  margin-bottom: 24px;
+}
+.case-card p {
+  font-size: 15px;
+  color: var(--bone);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.case-card .meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.case-card .meta div {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.case-card .meta div strong {
+  display: block;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ====== Platforms ====== */
+.platforms { position: relative; }
+.platforms::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(201, 168, 106, 0.06), transparent);
+  pointer-events: none;
+}
+.platforms .container { position: relative; }
+.platforms-intro {
+  font-size: 19px;
+  color: var(--bone);
+  max-width: 760px;
+  margin-bottom: 64px;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.platforms-intro strong { color: var(--cream); font-weight: 500; }
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.platform-card {
+  position: relative;
+  padding: 48px 40px;
+  background: linear-gradient(135deg, var(--ink-2), var(--ink-3));
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.platform-card * { text-decoration: none; }
+.platform-card::after {
+  content: "→";
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 28px;
+  color: var(--gold);
+  transition: transform 0.4s ease;
+}
+.platform-card:hover { border-color: var(--gold); }
+.platform-card:hover::after { transform: translateX(6px); color: var(--gold-bright); }
+.platform-card .url {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.platform-card h3 {
+  font-size: 32px;
+  margin-bottom: 18px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+}
+.platform-card .stage {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone);
+  padding: 4px 10px;
+  border: 1px solid var(--gold-deep);
+  margin-bottom: 24px;
+}
+.platform-card p {
+  font-size: 15px;
+  color: var(--bone);
+  line-height: 1.55;
+  max-width: 92%;
+}
+.platforms-foot {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.platforms-foot .stat {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  letter-spacing: -0.02em;
+  color: var(--gold-bright);
+  line-height: 1.1;
+}
+.platforms-foot p {
+  font-size: 16px;
+  color: var(--bone);
+  line-height: 1.55;
+}
+
+/* ====== ROI Calculator ====== */
+.roi {
+  background: var(--cream);
+  color: var(--cream-text);
+  position: relative;
+}
+.roi .eyebrow { color: var(--rust); }
+.roi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 72px;
+}
+.roi-controls {
+  background: rgba(26, 24, 21, 0.04);
+  border: 1px solid rgba(26, 24, 21, 0.12);
+  padding: 40px;
+}
+.roi-controls h3 {
+  font-size: 22px;
+  margin-bottom: 28px;
+  color: var(--cream-text);
+}
+.roi-field { margin-bottom: 28px; }
+.roi-field label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(26, 24, 21, 0.55);
+  margin-bottom: 8px;
+}
+.roi-field .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.roi-field .row .val {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  color: var(--rust);
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  letter-spacing: -0.02em;
+}
+.roi-field input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: rgba(26, 24, 21, 0.2);
+  outline: none;
+}
+.roi-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--rust);
+  cursor: pointer;
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 1px var(--rust);
+}
+.roi-field input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--rust);
+  cursor: pointer;
+  border: 3px solid var(--cream);
+}
+.roi-output {
+  padding: 8px 0;
+}
+.roi-output .eyebrow { margin-bottom: 18px; }
+.roi-output .headline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 6vw, 88px);
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--cream-text);
+  margin-bottom: 16px;
+}
+.roi-output .headline em {
+  font-style: italic;
+  color: var(--rust);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.roi-output .sub {
+  font-size: 17px;
+  color: rgba(26, 24, 21, 0.65);
+  line-height: 1.5;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+.roi-breakdown {
+  border-top: 1px solid rgba(26, 24, 21, 0.18);
+  padding-top: 28px;
+}
+.roi-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(26, 24, 21, 0.08);
+}
+.roi-row:last-child { border-bottom: none; }
+.roi-row .k {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(26, 24, 21, 0.6);
+}
+.roi-row .v {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--cream-text);
+  font-weight: 500;
+}
+.roi-row.total { padding-top: 22px; margin-top: 8px; border-top: 1px solid var(--rust); }
+.roi-row.total .k { color: var(--cream-text); font-weight: 500; }
+.roi-row.total .v { color: var(--rust); font-size: 24px; font-family: 'Fraunces', serif; font-variation-settings: "opsz" 48, "WONK" 1; }
+
+/* ====== Method ====== */
+.method { background: var(--ink-2); }
+.method-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.method-left h2 { margin-bottom: 32px; }
+.method-left p {
+  font-size: 19px;
+  color: var(--bone);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+.method-left p strong { color: var(--cream); font-weight: 500; }
+.method-left .quote {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--gold-bright);
+  border-left: 2px solid var(--gold);
+  padding-left: 24px;
+  margin-top: 36px;
+  font-variation-settings: "opsz" 48, "SOFT" 100, "WONK" 1;
+  line-height: 1.4;
+}
+.method-right {
+  background: var(--ink);
+  padding: 40px;
+  border: 1px solid var(--line);
+  position: relative;
+}
+.method-right::before {
+  content: "01 / KM";
+  position: absolute;
+  top: -1px;
+  right: 40px;
+  background: var(--ink-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+}
+.method-right h4 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+}
+.method-right .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute-2);
+  margin-bottom: 28px;
+  display: block;
+}
+.method-list { list-style: none; }
+.method-list li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--bone);
+  line-height: 1.5;
+}
+.method-list li:last-child { border-bottom: none; }
+.method-list li .step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+.method-list li .text strong {
+  color: var(--cream);
+  font-weight: 500;
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  display: block;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 36;
+}
+
+/* ====== About ====== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 96px;
+}
+.about-portrait {
+  position: relative;
+}
+.portrait-frame {
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--ink-2), var(--ink-3));
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px;
+}
+.portrait-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(201, 168, 106, 0.18), transparent 50%);
+}
+.portrait-frame::after {
+  content: "AK";
+  font-family: 'Fraunces', serif;
+  font-size: 280px;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.18;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: -0.05em;
+}
+.portrait-frame .caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.about-portrait .credentials {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.about-portrait .credentials span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+}
+.about-text h2 { margin-bottom: 32px; }
+.about-text p {
+  font-size: 18px;
+  color: var(--bone);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.about-text p strong { color: var(--cream); font-weight: 500; }
+.about-text p em.gold { font-style: italic; color: var(--gold-bright); font-family: 'Fraunces', serif; font-variation-settings: "opsz" 36, "SOFT" 100, "WONK" 1; font-size: 19px; }
+
+.role-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+.role-cell .num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  color: var(--gold-bright);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.role-cell .num sup { font-size: 14px; vertical-align: top; opacity: 0.7; }
+.role-cell .lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 10px;
+}
+
+/* ====== Capability Matrix ====== */
+.capability-section {
+  margin-top: 96px;
+  padding-top: 56px;
+  border-top: 1px solid var(--line-strong);
+}
+.capability-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+.capability-head h3 {
+  font-size: 44px;
+  font-variation-settings: "opsz" 80, "WONK" 1;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.capability-head h3 em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+}
+.capability-head .eyebrow { color: var(--gold); margin-bottom: 12px; }
+.capability-head p {
+  font-size: 16px;
+  color: var(--mute-2);
+  line-height: 1.55;
+  font-weight: 300;
+}
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.cap-cell {
+  padding: 28px 24px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  background: var(--ink);
+  transition: background 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+}
+.cap-cell:hover { background: rgba(201, 168, 106, 0.04); }
+.cap-cell .idx {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.cap-cell h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-variation-settings: "opsz" 36, "WONK" 1;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  color: var(--cream);
+  font-weight: 400;
+}
+.cap-cell h4 em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 36, "SOFT" 100, "WONK" 1;
+}
+.cap-cell .desc {
+  font-size: 13px;
+  color: var(--bone);
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+/* ====== Industries Strip ====== */
+.industries-strip {
+  margin-top: 80px;
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.industries-strip .head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.industries-strip .list {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-variation-settings: "opsz" 48, "SOFT" 50, "WONK" 1;
+  line-height: 1.4;
+  color: var(--cream);
+  letter-spacing: -0.005em;
+}
+.industries-strip .list span {
+  color: var(--gold);
+  margin: 0 14px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ====== Why Phronisi Callout ====== */
+.why-phronisi {
+  margin-top: 80px;
+  padding: 48px 52px;
+  background: linear-gradient(135deg, var(--ink-2), var(--ink-3));
+  border: 1px solid var(--gold-deep);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  gap: 56px;
+  align-items: start;
+}
+.why-phronisi::before {
+  content: "§ ON THE NAME";
+  position: absolute;
+  top: -10px;
+  left: 36px;
+  background: var(--ink);
+  padding: 4px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  border: 1px solid var(--gold-deep);
+}
+.why-phronisi .left h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-variation-settings: "opsz" 80, "WONK" 1;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 18px;
+}
+.why-phronisi .left h4 em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+}
+.why-phronisi .left .greek {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  color: var(--gold-deep);
+  font-variation-settings: "opsz" 48, "SOFT" 50";
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.why-phronisi .left .pronounce {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--mute);
+}
+.why-phronisi .right p {
+  font-size: 17px;
+  color: var(--bone);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.why-phronisi .right p strong { color: var(--cream); font-weight: 500; }
+.why-phronisi .right p em {
+  color: var(--gold-bright);
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+}
+.why-phronisi .right .quote {
+  margin-top: 22px;
+  padding: 18px 24px;
+  border-left: 2px solid var(--gold);
+  background: rgba(201, 168, 106, 0.04);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--cream);
+  font-variation-settings: "opsz" 36, "SOFT" 100, "WONK" 1;
+  line-height: 1.5;
+}
+.why-phronisi .right .quote .attr {
+  display: block;
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* ====== Contact ====== */
+.contact {
+  background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 50% 40% at 50% 30%, rgba(201, 168, 106, 0.10), transparent 70%);
+  pointer-events: none;
+}
+.contact .container { position: relative; z-index: 2; }
+.contact-headline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(60px, 9vw, 144px);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin-bottom: 64px;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  max-width: 1200px;
+}
+.contact-headline em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line-strong);
+}
+.contact-cell .lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.contact-cell .val {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-variation-settings: "opsz" 48, "WONK" 1;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.contact-cell .val a { color: var(--cream); text-decoration: none; border-bottom: 1px solid var(--gold-deep); padding-bottom: 2px; transition: border-color 0.25s ease; }
+.contact-cell .val a:hover { border-color: var(--gold-bright); }
+.contact-cell .sub {
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--mute);
+  letter-spacing: 0.06em;
+}
+
+/* ====== Footer ====== */
+.foot {
+  padding: 40px 48px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  background: var(--ink-2);
+}
+.foot a { color: var(--bone); text-decoration: none; transition: color 0.25s ease; }
+.foot a:hover { color: var(--gold); }
+.foot-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Fraunces', serif;
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 0;
+  font-variation-settings: "opsz" 36, "SOFT" 30, "WONK" 1;
+  color: var(--cream);
+}
+.foot-brand .foot-tag {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+  line-height: 1.4;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 1024px) {
+  .container { padding: 0 32px; }
+  .nav { padding: 16px 32px; }
+  .nav-links { gap: 24px; }
+  .nav-links a:not(.cta) { display: none; }
+  .brand .tagline-stack { display: none; }
+  .foot-brand .foot-tag { display: none; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 40px; }
+  .hero-cta-row { align-items: flex-start; }
+  .section-head { grid-template-columns: 1fr; gap: 28px; }
+  .case-grid { grid-template-columns: 1fr; }
+  .industry-grid { grid-template-columns: 1fr; }
+  .platform-grid { grid-template-columns: 1fr; }
+  .platforms-foot { grid-template-columns: 1fr; gap: 24px; }
+  .prop-grid { grid-template-columns: 1fr; gap: 36px; }
+  .roi-grid { grid-template-columns: 1fr; gap: 48px; }
+  .method-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .role-strip { grid-template-columns: repeat(2, 1fr); }
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+  .capability-head { grid-template-columns: 1fr; gap: 24px; }
+  .industries-strip .list { font-size: 20px; }
+  .etym-grid { grid-template-columns: 1fr; gap: 28px; }
+  .etymology { padding: 36px 0 32px; }
+  .why-phronisi { grid-template-columns: 1fr; gap: 28px; padding: 36px 28px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .service-row { grid-template-columns: 50px 1fr; gap: 16px; }
+  .service-row .desc, .service-row .scope { grid-column: 2; text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <div class="mark">Phronisi<span class="dot">.</span></div>
+    <div class="tagline-stack">
+      <div>AI Specialist · Indigenous &amp; Multi-industry</div>
+      <div>Finance · Operations · Strategy</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#practice">Practice</a>
+    <a href="#industries">Industries</a>
+    <a href="#engagements">Engagements</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#method">Method</a>
+    <a href="#contact" class="cta">Book a session</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-meta">
+      <div class="left">Vol. I · Issue 01 · <span>May 2026</span></div>
+      <div class="right">Victoria, BC · Coast Salish Territory<br>Operating with respect for traditional lands</div>
+    </div>
+
+    <h1 class="hero-title">
+      Builder-level AI<br>fluency &mdash; from <em>a CFO<br>who actually ships.</em>
+    </h1>
+
+    <div class="hero-tagline-feature">
+      <span class="line">AI Specialist <span class="sep">·</span> Indigenous <span class="amp">&amp;</span> Multi-industry</span>
+      <span class="line">Finance <span class="sep">·</span> Operations <span class="sep">·</span> Strategy</span>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="hero-lede">
+        Most AI consultants have never operated a balance sheet. Most CFOs don't write code.
+        <strong>Arthur Kostaras, CPA &middot; CMA &middot; CF &middot; REV &middot; CAFM Cand., does both</strong> &mdash; thirty years of senior finance leadership,
+        four production AI platforms, and a published methodology. AI counsel for institutions
+        that have run out of patience for theory.
+      </p>
+      <div class="hero-cta-row">
+        <div class="sub">Now booking Q3 &mdash; Q4 2026</div>
+        <a href="#contact" class="big">Start a conversation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRIPARTITE PLAQUE ============ -->
+<section class="etymology">
+  <div class="container">
+    <div class="etym-grid">
+
+      <div class="etym-cell">
+        <div class="head"><span class="ord">01 ·</span> The mark</div>
+        <div class="title">Phronisi<span class="dot">.</span></div>
+        <div class="meta-row">
+          <span class="greek">φρόνηση</span>
+          <span class="pronounce">FROH &middot; nee &middot; see</span>
+        </div>
+        <div class="desc">
+          Aristotle&rsquo;s word for <em>practical wisdom</em> &mdash; the wisdom of <strong>acting well in the specific case</strong>. Distinct from <em>sophia</em> (theory) and <em>techne</em> (craft). The third thing &mdash; and the work the practice installs.
+        </div>
+      </div>
+
+      <div class="etym-cell">
+        <div class="head"><span class="ord">02 ·</span> The specialty</div>
+        <div class="title"><em>Indigenous</em> Finance</div>
+        <div class="meta-row">
+          <span class="pronounce">Section 35 &middot; UNDRIP &middot; DRIPA &middot; OCAP&reg;</span>
+        </div>
+        <div class="desc">
+          Section 35, UNDRIP, DRIPA, OCAP&reg;, FNFMA, FNFA, ITB &mdash; <strong>applied to live commercial work</strong>. The hardest commercial environment in Canadian finance, and the practice&rsquo;s deepest credential.
+        </div>
+      </div>
+
+      <div class="etym-cell">
+        <div class="head"><span class="ord">03 ·</span> The practice</div>
+        <div class="title"><em>Multi-industry</em> Practice</div>
+        <div class="meta-row">
+          <span class="pronounce">Finance &middot; Operations &middot; Strategy</span>
+        </div>
+        <div class="desc">
+          Across ten sectors &mdash; financial institutions, real estate, construction, professional services, defence, hospitality, energy, government, foundations, and Indigenous economic development. <strong>The breadth is the moat.</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="val">$705M+</span> Career capital formation</div>
+    <div class="ticker-item"><span class="val">4</span> AI platforms in production</div>
+    <div class="ticker-item"><span class="val">CPA · CMA · CF · REV</span> Designations</div>
+    <div class="ticker-item"><span class="val">10</span> Industries served</div>
+    <div class="ticker-item"><span class="val">Author</span> The Kostaras Method</div>
+    <div class="ticker-item"><span class="val">CAFM</span> Candidate · AFOA Canada</div>
+    <div class="ticker-item"><span class="val">$705M+</span> Career capital formation</div>
+    <div class="ticker-item"><span class="val">4</span> AI platforms in production</div>
+    <div class="ticker-item"><span class="val">CPA · CMA · CF · REV</span> Designations</div>
+    <div class="ticker-item"><span class="val">10</span> Industries served</div>
+    <div class="ticker-item"><span class="val">Author</span> The Kostaras Method</div>
+    <div class="ticker-item"><span class="val">CAFM</span> Candidate · AFOA Canada</div>
+  </div>
+</div>
+
+<!-- ============ PROPOSITION ============ -->
+<section class="proposition">
+  <div class="container">
+    <div class="eyebrow">§ The Proposition</div>
+    <h2 class="prop-headline">
+      AI is the largest operating-margin expansion event <em>since the spreadsheet.</em>
+      The question is no longer whether &mdash; it is who installs it, how fast, and how defensibly. The wrong answer costs you the decade.
+    </h2>
+
+    <div class="prop-grid">
+      <div class="prop-cell">
+        <div class="num">30<sup>yrs</sup></div>
+        <div class="lbl">Operating credibility</div>
+        <p>Three decades as a senior finance executive across Canada, the U.S., Europe, and the Middle East. CFO and Managing Director roles in environments where the model has to actually clear.</p>
+      </div>
+      <div class="prop-cell">
+        <div class="num">4</div>
+        <div class="lbl">Production platforms shipped</div>
+        <p>Not slides. Four working AI-powered platforms on Railway / Node.js / PostgreSQL, designed and operated personally. Code, infrastructure, customers, the whole stack.</p>
+      </div>
+      <div class="prop-cell">
+        <div class="num">1</div>
+        <div class="lbl">Published methodology</div>
+        <p>The Kostaras Method &mdash; a public Claude Code skills library used by practitioners to encode senior-finance judgment into AI workflows. Not theory; an artefact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRACTICE / SERVICES ============ -->
+<section id="practice">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="index"><span class="num">01 /</span> The Practice</div>
+        <h2 class="title">Three formats. <em>One method.</em></h2>
+      </div>
+      <p class="blurb">
+        The work scales from a single ninety-minute briefing to a full fifteen-week implementation sprint. Every engagement begins with the same diagnostic and ends with operating capability transferred to your team.
+      </p>
+    </div>
+
+    <div class="services-list">
+      <div class="service-row">
+        <div class="ix">/ 01</div>
+        <div class="name">The <em>Briefing</em></div>
+        <div class="desc">A ninety-minute executive masterclass for a senior leadership team or institutional cohort. AI fluency, redaction discipline, working-paper documentation. Walks in expecting hype, walks out with a usable framework. <em>Financial-institution lender format.</em></div>
+        <div class="scope">
+          <span class="duration">90 min · ≤50 attendees</span>
+          <span class="price">Engagement fee on request</span>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="ix">/ 02</div>
+        <div class="name">The <em>Course</em></div>
+        <div class="desc">A half-day to two-day live virtual professional development course, designed for professional bodies and member associations. CPD-credit-ready, designation-defensible, with versioned materials and an annual refresh cycle. <em>CPABC syllabus format.</em></div>
+        <div class="scope">
+          <span class="duration">0.5 &mdash; 2 days · cohort</span>
+          <span class="price">Licensable to body</span>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="ix">/ 03</div>
+        <div class="name">The <em>Sprint</em></div>
+        <div class="desc">A fifteen-week AI implementation sprint that stands up an accountability system, a workflow agent, or a domain-specific platform for an operating company. Architecture, build, governance, handover. <em>Construction-sector implementation format.</em></div>
+        <div class="scope">
+          <span class="duration">15 weeks · embedded</span>
+          <span class="price">Fixed-fee + performance</span>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="ix">/ 04</div>
+        <div class="name">The <em>Advisory</em></div>
+        <div class="desc">An ongoing AI strategy retainer for a CEO, CFO, or Board. Monthly working sessions, quarterly governance reviews, ad-hoc counsel on procurement, vendor selection, and regulatory exposure (OSFI E-23, OPC AIDA, OCAP&reg;).</div>
+        <div class="scope">
+          <span class="duration">12 mo · retainer</span>
+          <span class="price">Quarterly draw</span>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="ix">/ 05</div>
+        <div class="name">The <em>Keynote</em></div>
+        <div class="desc">A conference or industry-day keynote on AI in Indigenous finance, AI for the senior finance executive, or the practitioner's path from CFO to builder. Speaking history available on request.</div>
+        <div class="scope">
+          <span class="duration">45 &mdash; 60 min</span>
+          <span class="price">Speaking fee on request</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES ============ -->
+<section class="industries" id="industries">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="index"><span class="num">02 /</span> Industries</div>
+        <h2 class="title">Ten sectors. <em>Ten levers.</em></h2>
+      </div>
+      <p class="blurb">
+        Where AI is moving operating margin in 2026 &mdash; with the specific drivers, not the hype. The list below is not theoretical; it is the work being done with clients today.
+      </p>
+    </div>
+
+    <div class="industry-grid">
+
+      <div class="industry-card">
+        <div class="idx">/ 01 &nbsp; Financial Institutions</div>
+        <h3>Banks, credit unions, trust companies</h3>
+        <div class="prov">Credit memos that write themselves while your lender keeps the relationship.</div>
+        <ul>
+          <li>Credit-memo and deal-package automation, with audit-defensible documentation.</li>
+          <li>KYC / AML triage and exception handling at scale.</li>
+          <li>Regulatory drafting against OSFI E-23, FINTRAC, and CSA obligations.</li>
+          <li>Customer-correspondence and disclosure generation, multilingual where required.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>30 &ndash; 50% of lender desk time recoverable</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 02 &nbsp; Indigenous Economic Development</div>
+        <h3>Econ-dev corporations, band-owned entities</h3>
+        <div class="prov">Board packages, JVAs, and grant reporting at one-fifth the desk time.</div>
+        <ul>
+          <li>Chief &amp; Council briefing notes and Board packages, written in your house voice.</li>
+          <li>JVA review, redlining, and clause-comparison against your standard precedent.</li>
+          <li>ISC / CORP / NRT application drafting and reporting, fully reconcilable.</li>
+          <li>OCAP&reg;-respecting research synthesis and Indigenous-rights analysis.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>4 &ndash; 6&times; CFO output multiplier</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 03 &nbsp; Construction &amp; Infrastructure</div>
+        <h3>General contractors, project managers, developers</h3>
+        <div class="prov">Project drift, visible before it hits the cost-to-complete.</div>
+        <ul>
+          <li>RFI, change-order, and submittal processing with forensic anomaly flagging.</li>
+          <li>Daily-report and field-data aggregation across multi-project portfolios.</li>
+          <li>Subcontractor compliance, prequalification, and bonding documentation.</li>
+          <li>Drawings comparison, revision tracking, and dispute-readiness packs.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>15 &ndash; 25% G&amp;A reduction in 12 months</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 04 &nbsp; Professional Services</div>
+        <h3>Accounting, legal, advisory firms</h3>
+        <div class="prov">Billable hours recovered without losing the partner's judgment.</div>
+        <ul>
+          <li>Document review, due-diligence synthesis, and discovery preparation.</li>
+          <li>Client intake, engagement letters, and conflict checks at intake speed.</li>
+          <li>Working-paper documentation that holds up to peer review and inspection.</li>
+          <li>Research and precedent retrieval grounded in your own internal library.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>8 &ndash; 15 h / week per professional</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 05 &nbsp; Real Estate Development</div>
+        <h3>Developers, REITs, land trusts</h3>
+        <div class="prov">Proformas modelled in minutes, scenarios stress-tested in hours.</div>
+        <ul>
+          <li>Proforma generation, sensitivity analysis, and waterfall modelling.</li>
+          <li>Zoning, entitlement, and approval-process research and tracking.</li>
+          <li>Construction-draw monitoring against budget and schedule.</li>
+          <li>Lender package and Investment Committee memo drafting.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>Decision cycle: weeks &rarr; days</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 06 &nbsp; Hospitality &amp; Tourism</div>
+        <h3>Hotels, restaurants, tour operators</h3>
+        <div class="prov">Guest communications at concierge grade, in every language.</div>
+        <ul>
+          <li>Multilingual guest correspondence, review responses, and FAQs.</li>
+          <li>Revenue management, dynamic pricing, and forecast modelling.</li>
+          <li>Online reputation monitoring and brand-voice response drafting.</li>
+          <li>Booking-data analysis, cohort segmentation, and direct-channel growth.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>20 &ndash; 30% guest-services labour reduction</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 07 &nbsp; Defence &amp; Aerospace</div>
+        <h3>Primes, sub-tier suppliers, Indigenous partners</h3>
+        <div class="prov">Bids, ITB, and compliance documentation &mdash; audit-defensible by design.</div>
+        <ul>
+          <li>RFP and bid-package drafting with ITB / value-proposition modelling.</li>
+          <li>Procurement compliance documentation (PSPC, TBS, NSP).</li>
+          <li>Industrial &amp; Technological Benefits (ITB / IRB / VP) reporting.</li>
+          <li>Controlled Goods Program and CGP administration support.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>40%+ proposal-cycle compression</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 08 &nbsp; Energy &amp; Resources</div>
+        <h3>Mining, oil &amp; gas, renewables, utilities</h3>
+        <div class="prov">ESG, regulatory, and ops reporting &mdash; from days to hours.</div>
+        <ul>
+          <li>ESG and sustainability reporting (CSDS, GRI, TNFD, TCFD).</li>
+          <li>Regulatory filings across CER, BCER, AER, and provincial regulators.</li>
+          <li>Operations data synthesis, KPI dashboards, and anomaly detection.</li>
+          <li>Indigenous consultation logs and IBA documentation pipelines.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>Reporting cycle: days &rarr; hours</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 09 &nbsp; Government &amp; Crowns</div>
+        <h3>Federal, provincial, municipal, Crown corporations</h3>
+        <div class="prov">Briefing notes and citizen services at public-sector quality.</div>
+        <ul>
+          <li>Briefing notes, decision notes, and ministerial correspondence.</li>
+          <li>Policy and legislative synthesis grounded in primary sources.</li>
+          <li>Grant administration and recipient-communications workflows.</li>
+          <li>FOI / ATIP intake, triage, and severing assistance.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>50%+ briefing-cycle compression</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ 10 &nbsp; Foundations &amp; Non-Profits</div>
+        <h3>Charities, foundations, NGOs</h3>
+        <div class="prov">Grant capacity, doubled &mdash; without growing the team.</div>
+        <ul>
+          <li>Grant proposals, funder narratives, and Letters of Intent.</li>
+          <li>Impact reporting and donor stewardship communications.</li>
+          <li>Program-data analysis and outcomes-tracking dashboards.</li>
+          <li>Board governance and committee documentation.</li>
+        </ul>
+        <div class="metric"><span>Indicative impact</span><strong>2 &ndash; 4&times; grant capacity per FTE</strong></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGAGEMENTS ============ -->
+<section class="engagements" id="engagements">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="index"><span class="num">03 /</span> Engagements</div>
+        <h2 class="title">In flight, <em>2026.</em></h2>
+      </div>
+      <p class="blurb">
+        A snapshot of current work across the three practice formats. Each engagement is run personally; no associates, no sub-contractors, no junior delivery.
+      </p>
+    </div>
+
+    <div class="case-grid">
+      <!-- CPABC -->
+      <div class="case-card">
+        <div class="tag">
+          <span>The Course / 02</span>
+          <span class="status prep">Syllabus delivered · awaiting decision</span>
+        </div>
+        <h3>AI for the <em>Canadian CPA.</em></h3>
+        <div class="client">Chartered Professional Accountants of British Columbia</div>
+        <p>
+          A half-day live virtual PD course built for the CPABC catalogue. Module structure spans the Profit Formula, the Triangulated Lens, CAS implications, and an audit-defensible Working Paper Documentation Template. Break-even modelled at seventeen seats per cohort against comparable Canadian-market PD pricing of $295&ndash;$495.
+        </p>
+        <div class="meta">
+          <div>Format<strong>Half-day virtual</strong></div>
+          <div>Cohort<strong>Designation-holders</strong></div>
+        </div>
+      </div>
+
+      <!-- Anonymized financial institution -->
+      <div class="case-card">
+        <div class="tag">
+          <span>The Briefing / 01</span>
+          <span class="status prep">Scheduled · Q2 &ndash; Q3 2026</span>
+        </div>
+        <h3>An AI <em>masterclass</em> for lenders.</h3>
+        <div class="client">A Canadian financial institution · Indigenous-owned</div>
+        <p>
+          A ninety-minute executive masterclass for approximately fifty commercial lenders at a major Canadian financial institution. Anchored against the OSFI Guideline E-23 effective date of 1 May 2027. The session converts a lending team from passive AI-curiosity into a credit-memo workflow that holds up to internal credit and OSFI review &mdash; <em style="color:var(--gold-bright); font-family: Fraunces; font-style: italic;">before</em> competitors do the same.
+        </p>
+        <div class="meta">
+          <div>Format<strong>90-minute masterclass</strong></div>
+          <div>Audience<strong>≈50 commercial lenders</strong></div>
+        </div>
+      </div>
+
+      <!-- Anonymized construction company -->
+      <div class="case-card">
+        <div class="tag">
+          <span>The Sprint / 03</span>
+          <span class="status">Proposal stage · 15-week plan</span>
+        </div>
+        <h3>An accountability <em>system,</em> built.</h3>
+        <div class="client">A substantial Canadian construction company</div>
+        <p>
+          A fifteen-week AI-driven accountability build for a substantial Canadian construction company. Architecture, governance scaffolding, performance-fee structure, and a Day-105 handover. The system delivers what spreadsheets and dashboards have failed to: durable cause-and-effect visibility on project drift, before it shows up in the cost-to-complete &mdash; turning weeks of senior-PM forensic work into a daily, automated brief.
+        </p>
+        <div class="meta">
+          <div>Duration<strong>15 weeks</strong></div>
+          <div>Structure<strong>Fixed + performance</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATFORMS ============ -->
+<section class="platforms" id="platforms">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="index"><span class="num">04 /</span> Platforms</div>
+        <h2 class="title">Four built. <em>Operating now.</em></h2>
+      </div>
+      <p class="blurb">
+        Four AI-powered platforms designed, built, and operated personally on a shared Railway / Node.js / PostgreSQL stack. Not portfolio pieces. Live, instrumented infrastructure.
+      </p>
+    </div>
+
+    <p class="platforms-intro">
+      Why does it matter that a CFO has shipped four platforms? Because the question every client should ask of any AI advisor is &mdash; <strong>have you ever owned the consequences of an AI decision through to operation?</strong> Most haven't. These platforms are the proof that the counsel has been earned the hard way.
+    </p>
+
+    <div class="platform-grid">
+      <a class="platform-card" href="https://canadaaccountants.app" target="_blank">
+        <div class="url">canadaaccountants.app</div>
+        <h3>Canada Accountants</h3>
+        <div class="stage">Stage 1 · Practice growth</div>
+        <p>An AI-powered matching platform for Canadian CPAs and the small businesses, families, and founders that need them. SEO-instrumented, profile-claim flow, AI bio generator, outreach templates.</p>
+      </a>
+
+      <a class="platform-card" href="https://canadalawyers.app" target="_blank">
+        <div class="url">canadalawyers.app</div>
+        <h3>Canada Lawyers</h3>
+        <div class="stage">Stage 2 · Practice growth</div>
+        <p>A parallel AI-powered platform for Canadian lawyers. Same core stack, distinct content model. Designed for instrument-led claim-to-engagement conversion rather than passive directory listings.</p>
+      </a>
+
+      <a class="platform-card" href="https://canadainvesting.app" target="_blank">
+        <div class="url">canadainvesting.app</div>
+        <h3>Canada Investing</h3>
+        <div class="stage">Stage 3 · Capital allocation</div>
+        <p>An AI-powered platform for Canadian investors and capital allocators. First real claim conversions in flight. The stage of the lifecycle where capital is put to work, not just sought.</p>
+      </a>
+
+      <a class="platform-card" href="https://canadabusinessexits.app" target="_blank">
+        <div class="url">canadabusinessexits.app</div>
+        <h3>Canada Business Exits</h3>
+        <div class="stage">Stage 4 · Exit</div>
+        <p>The fourth platform in the lifecycle &mdash; matching Canadian founders preparing for transition with the advisors, capital, and counsel that get good outcomes done.</p>
+      </a>
+    </div>
+
+    <div class="platforms-foot">
+      <div class="stat">Career → Capital → Exit:<br>covered end-to-end.</div>
+      <p>
+        The four platforms form a lifecycle, not a portfolio. Every Canadian professional, business owner, and capital allocator moves through these stages. The infrastructure to support them &mdash; instrumented, AI-native, and operating &mdash; is already built.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROI / CALCULATOR ============ -->
+<section class="roi">
+  <div class="container">
+    <div class="section-head" style="border-color: rgba(26,24,21,0.18);">
+      <div>
+        <div class="index" style="color: var(--rust);"><span class="num" style="color: rgba(26,24,21,0.5);">05 /</span> The Math</div>
+        <h2 class="title" style="color: var(--cream-text);">What is <em>"trained for AI"</em> worth?</h2>
+      </div>
+      <p class="blurb" style="color: rgba(26,24,21,0.65);">
+        A working estimate of what a single ninety-minute briefing returns to an organization in the first twelve months. Move the sliders. The math is conservative by design.
+      </p>
+    </div>
+
+    <div class="roi-grid">
+      <div class="roi-controls">
+        <h3>Inputs</h3>
+
+        <div class="roi-field">
+          <label>Knowledge-worker headcount</label>
+          <div class="row"><span></span><span class="val" id="hcVal">50</span></div>
+          <input type="range" id="hc" min="10" max="500" value="50" step="10" />
+        </div>
+
+        <div class="roi-field">
+          <label>Average loaded hourly rate ($CAD)</label>
+          <div class="row"><span></span><span class="val" id="rateVal">$110</span></div>
+          <input type="range" id="rate" min="50" max="350" value="110" step="10" />
+        </div>
+
+        <div class="roi-field">
+          <label>Weekly hours reclaimed per person (post-training)</label>
+          <div class="row"><span></span><span class="val" id="hrsVal">2.5</span></div>
+          <input type="range" id="hrs" min="0.5" max="8" value="2.5" step="0.5" />
+        </div>
+
+        <div class="roi-field">
+          <label>Adoption rate after training</label>
+          <div class="row"><span></span><span class="val" id="adoptVal">60%</span></div>
+          <input type="range" id="adopt" min="20" max="90" value="60" step="5" />
+        </div>
+      </div>
+
+      <div class="roi-output">
+        <div class="eyebrow">12-month return</div>
+        <div class="headline" id="returnVal">$<em>515,000</em></div>
+        <p class="sub">
+          Returned to the operating business in reclaimed analyst, manager, and partner hours during the twelve months after a single ninety-minute briefing. Conservative model: 48 working weeks, no compounding for downstream automation.
+        </p>
+        <div class="roi-breakdown">
+          <div class="roi-row">
+            <span class="k">Hours reclaimed / yr</span>
+            <span class="v" id="hoursVal">3,600 h</span>
+          </div>
+          <div class="roi-row">
+            <span class="k">Indicative engagement fee</span>
+            <span class="v">$18,500</span>
+          </div>
+          <div class="roi-row">
+            <span class="k">First-year payback period</span>
+            <span class="v" id="paybackVal">5 days</span>
+          </div>
+          <div class="roi-row total">
+            <span class="k">Indicative 12-month ROI</span>
+            <span class="v" id="roiVal">27.8×</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="method" id="method">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="index"><span class="num">06 /</span> The Method</div>
+        <h2 class="title">The <em>Kostaras Method.</em></h2>
+      </div>
+      <p class="blurb">
+        A published Claude Code skills library that encodes senior finance judgment into AI workflows. Not a prompt pack &mdash; a methodology with structure, conventions, and a working artefact behind it.
+      </p>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-left">
+        <p>
+          The Kostaras Method is a public, versioned <strong>skills library for Claude Code</strong>. It is the working memory of a senior finance executive, externalised &mdash; how to read an investment memorandum, how to structure a joint venture agreement, how to argue with a DSCR assumption, how to decide whether an AI output is defensible.
+        </p>
+        <p>
+          The method is what an operator does &mdash; the AI just executes it. Theory is the easy half. The harder half &mdash; the one that almost no AI consultant teaches &mdash; is the judgment that decides whether the answer is the answer.
+        </p>
+        <div class="quote">"AI is a force multiplier. The multiplier of zero judgment is still zero. The work is to install the judgment."</div>
+      </div>
+
+      <div class="method-right">
+        <h4>What's inside the library</h4>
+        <span class="label">A representative sample</span>
+        <ul class="method-list">
+          <li><span class="step">/ 01</span><span class="text"><strong>Investment Memo</strong>Institutional-grade memoranda in a defensible house style.</span></li>
+          <li><span class="step">/ 02</span><span class="text"><strong>JVA Drafting</strong>Clause libraries, negotiating positions, deal-specific precedent.</span></li>
+          <li><span class="step">/ 03</span><span class="text"><strong>Financial Analysis</strong>Cash flow, waterfall, IRR / NPV, scenario tooling.</span></li>
+          <li><span class="step">/ 04</span><span class="text"><strong>Due Diligence</strong>Counterparty assessment, data-room review, forensic flags.</span></li>
+          <li><span class="step">/ 05</span><span class="text"><strong>Indigenous Legal Frameworks</strong>Section 35, UNDRIP, DRIPA, OCAP&reg;, ITB analysis.</span></li>
+          <li><span class="step">/ 06</span><span class="text"><strong>Board Governance</strong>Board packages, BCRs, fiduciary documentation.</span></li>
+          <li><span class="step">/ 07</span><span class="text"><strong>Internal Controls</strong>ICP series, FMB compliance, segregation of duties.</span></li>
+          <li><span class="step">/ 08</span><span class="text"><strong>Forecasting &amp; Budgets</strong>Multi-year projections, variance, Chief &amp; Council reporting.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="index"><span class="num">07 /</span> About</div>
+        <h2 class="title">Arthur <em>Kostaras.</em></h2>
+      </div>
+      <p class="blurb">
+        Greek-Canadian finance executive, AI builder, and instructor. Based in Victoria, BC. Operating from Coast Salish territory.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-portrait">
+        <div class="portrait-frame">
+          <div class="caption">Photograph forthcoming</div>
+        </div>
+        <div class="credentials">
+          <span>CPA</span>
+          <span>CMA</span>
+          <span>CF</span>
+          <span>REV</span>
+          <span>CAFM Cand.</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <p>
+          Three decades of senior finance leadership across <strong>Canada, the United States, Europe, and the Middle East</strong> &mdash; carrying roles as Managing Director, Chief Financial Officer, and Chief Executive Officer through capital-markets, royalty-financing, hospitality, real estate, defence, infrastructure, and Indigenous-economic-development environments. <em class="gold">Career capital formation track record of $705M+. Operations management track record of $85M+.</em>
+        </p>
+        <p>
+          The breadth of operating context is the source of the cross-industry intuition the practice delivers. A senior credit memo, a defence-procurement value proposition, a hospitality renovation proforma, and an Indigenous joint-venture agreement do not look the same on the page &mdash; but the disciplines that make each of them defensible are recognisably the same. That is the work.
+        </p>
+        <p>
+          Once frontier AI became operator-grade in late 2022 and through 2023, applied it ruthlessly across the senior-finance workflow &mdash; investment memoranda, JVA drafting, financial modelling, governance documentation, due diligence. By late 2025, the next step was inevitable: <strong>shipping production AI infrastructure</strong>. The first platform was <em class="gold">CanadaAccountants.app</em>, followed by three more &mdash; a lifecycle of four platforms covering practice growth, capital allocation, and business exits for Canadian professionals.
+        </p>
+        <p>
+          The consulting practice grew organically out of that work. A Canadian financial institution, <strong>CPABC</strong>, and a substantial Canadian construction company were the first three institutions to engage Arthur personally as an AI Specialist. The practice exists to extend that work to a small, selective roster of additional institutions per year.
+        </p>
+
+        <div class="role-strip">
+          <div class="role-cell"><div class="num">30<sup>+</sup></div><div class="lbl">Years senior finance</div></div>
+          <div class="role-cell"><div class="num">$705M<sup>+</sup></div><div class="lbl">Career capital formation</div></div>
+          <div class="role-cell"><div class="num">4</div><div class="lbl">AI platforms shipped</div></div>
+          <div class="role-cell"><div class="num">4</div><div class="lbl">Continents · operating</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capability Matrix -->
+    <div class="capability-section">
+      <div class="capability-head">
+        <div>
+          <div class="eyebrow">§ The toolkit</div>
+          <h3>Twelve <em>capabilities,</em> earned in operation.</h3>
+        </div>
+        <p>
+          What the practice actually brings to the room. Each item is grounded in years of executive-grade delivery &mdash; not skills picked up for a brochure.
+        </p>
+      </div>
+
+      <div class="cap-grid">
+
+        <div class="cap-cell">
+          <div class="idx">01</div>
+          <h4>Senior finance <em>leadership</em></h4>
+          <div class="desc">CFO, CEO, and Managing Director-level decision-making across regulated and non-regulated environments.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">02</div>
+          <h4>Investment <em>memoranda</em></h4>
+          <div class="desc">Institutional-grade memos in a defensible house style. Used by lenders, IC&rsquo;s, boards, and counterparties.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">03</div>
+          <h4>Capital <em>formation</em></h4>
+          <div class="desc">Debt, equity, royalty, and blended structures. $705M+ raised and deployed across career.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">04</div>
+          <h4>JVA &amp; commercial <em>contracts</em></h4>
+          <div class="desc">Negotiation, clause libraries, redlining, and precedent-led drafting for joint ventures and partnership agreements.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">05</div>
+          <h4>Due diligence &amp; <em>forensics</em></h4>
+          <div class="desc">Counterparty assessment, data-room review, fee-extraction pattern detection, and pre-investment investigation.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">06</div>
+          <h4>Real estate &amp; <em>infrastructure</em></h4>
+          <div class="desc">Development proformas, sensitivity and waterfall modelling, residual land value, and lender-package drafting.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">07</div>
+          <h4>Defence &amp; <em>ITB</em> modelling</h4>
+          <div class="desc">RFP and bid-package drafting, value-proposition modelling, PSPC/TBS compliance, controlled-goods administration.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">08</div>
+          <h4>Indigenous finance <em>frameworks</em></h4>
+          <div class="desc">Section 35, UNDRIP, DRIPA, OCAP&reg;, FNFMA, FMB and FNFA mechanics applied to live commercial work.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">09</div>
+          <h4>Board <em>governance</em></h4>
+          <div class="desc">Board packages, committee materials, BCRs, fiduciary discipline, AGM preparation, and committee secretariat.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">10</div>
+          <h4>Internal <em>controls</em></h4>
+          <div class="desc">ICP-series authorship, FMB compliance, segregation of duties, payroll controls, and journal-entry authorisation.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">11</div>
+          <h4>AI <em>implementation</em></h4>
+          <div class="desc">Architecture, agent design, retrieval, and the engineering of four production platforms running on a personal stack.</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="idx">12</div>
+          <h4>Methodology <em>authorship</em></h4>
+          <div class="desc">The Kostaras Method &mdash; a public, versioned Claude Code skills library used to encode senior-finance judgment.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Industries Served Strip -->
+    <div class="industries-strip">
+      <div class="head">§ Industries operated across</div>
+      <div class="list">
+        Financial services<span>·</span>Capital markets<span>·</span>Royalty financing<span>·</span>Real estate development<span>·</span>Hospitality &amp; tourism<span>·</span>Construction &amp; infrastructure<span>·</span>Defence procurement<span>·</span>Indigenous economic development<span>·</span>Professional services<span>·</span>Public-sector advisory
+      </div>
+    </div>
+    <!-- Why Phronisi -->
+    <div class="why-phronisi">
+      <div class="left">
+        <h4>Why <em>Phronisi.</em></h4>
+        <div class="greek">φρόνηση</div>
+        <div class="pronounce">FROH &middot; nee &middot; see</div>
+      </div>
+      <div class="right">
+        <p>
+          Aristotle distinguished three kinds of knowing in the <em>Nicomachean Ethics</em>. <strong>Sophia</strong> is theoretical wisdom &mdash; what academics deliver. <strong>Techne</strong> is technical craft &mdash; what AI tools deliver. <strong>Phronesis</strong> is the third thing: <em>practical wisdom</em> &mdash; the wisdom that knows how to act well in the specific situation.
+        </p>
+        <p>
+          That third thing is exactly what is missing in most AI advisory conversations. Theory and technical capability are <strong>everywhere</strong>; <em>practical wisdom in their application</em> is rare. The practice is named for what it installs.
+        </p>
+        <div class="quote">
+          "Practical wisdom is concerned not only with universals but with particulars."
+          <span class="attr">Aristotle &middot; Nicomachean Ethics, Book VI</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="contact-headline">
+      Move on AI <em>before</em> your competitors do.
+    </h2>
+
+    <div class="contact-grid">
+      <div class="contact-cell">
+        <div class="lbl">Begin a conversation</div>
+        <div class="val">
+          <a href="mailto:arthur@phronisi.app">arthur@phronisi.app</a>
+        </div>
+        <div class="sub">Personal-practice contact · response within 24 hours, weekdays</div>
+      </div>
+      <div class="contact-cell">
+        <div class="lbl">By telephone</div>
+        <div class="val">+1 (647) 956 &middot; 7290</div>
+        <div class="sub">PT · text or voice</div>
+      </div>
+      <div class="contact-cell">
+        <div class="lbl">Booking</div>
+        <div class="val">Q3 — Q4 2026</div>
+        <div class="sub">2–4 new engagements per quarter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot-brand">
+    <span>Phronisi<span style="color:var(--gold);">.</span></span>
+    <span class="foot-tag">
+      <span>AI Specialist · Indigenous &amp; Multi-industry</span>
+      <span>Finance · Operations · Strategy</span>
+    </span>
+  </div>
+  <div>© 2026 · Victoria, BC &nbsp; · &nbsp; Operating on Coast Salish territory</div>
+</footer>
+
+<script>
+  // ROI calculator
+  const $ = id => document.getElementById(id);
+  const fmt = n => '$' + Math.round(n).toLocaleString();
+  const compute = () => {
+    const hc = +$('hc').value;
+    const rate = +$('rate').value;
+    const hrs = +$('hrs').value;
+    const adopt = +$('adopt').value / 100;
+    const weeks = 48;
+    const fee = 18500;
+
+    const hours = hc * hrs * weeks * adopt;
+    const dollars = hours * rate;
+    const paybackDays = Math.max(1, Math.round((fee / (dollars / 365))));
+    const roi = (dollars / fee).toFixed(1);
+
+    $('hcVal').textContent = hc;
+    $('rateVal').textContent = '$' + rate;
+    $('hrsVal').textContent = hrs.toFixed(1);
+    $('adoptVal').textContent = Math.round(adopt * 100) + '%';
+
+    $('hoursVal').textContent = Math.round(hours).toLocaleString() + ' h';
+    // Display headline with em wrapping
+    const dollarsStr = fmt(dollars);
+    $('returnVal').innerHTML = '$<em>' + dollarsStr.slice(1) + '</em>';
+    $('paybackVal').textContent = paybackDays + ' day' + (paybackDays === 1 ? '' : 's');
+    $('roiVal').textContent = roi + '×';
+  };
+  ['hc','rate','hrs','adopt'].forEach(id => $(id).addEventListener('input', compute));
+  compute();
+</script>
+</body>
+</html>
