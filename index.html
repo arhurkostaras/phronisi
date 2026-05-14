@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Phronisi — AI Specialist · Indigenous &amp; Multi-industry · Finance · Operations · Strategy</title>
-<meta name="description" content="Phronisi. AI counsel for Indigenous and multi-industry institutions across finance, operations, and strategy. From the Greek φρόνηση — Aristotle's word for practical wisdom. Founded by Arthur Kostaras." />
+<title>Phronisi — AI Specialist · Multi-industry &amp; Indigenous · Finance · Operations · Strategy</title>
+<meta name="description" content="Phronisi. AI counsel for ten industries across finance, operations, and strategy. Multi-industry practice with Indigenous-finance as the deepest credential. From the Greek φρόνηση — Aristotle's word for practical wisdom. Founded by Arthur Kostaras." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -397,6 +397,204 @@ h1.hero-title {
   font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
   margin: 0 2px;
 }
+
+/* ====== Atlas Section overrides ====== */
+.etymology.atlas-section::before { display: none; }
+.etymology.atlas-section { padding: 64px 0 80px; }
+
+/* ====== Brand Strip (compressed etymology) ====== */
+.brand-strip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: baseline;
+  padding: 8px 0 36px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 56px;
+}
+.brand-strip-left {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  white-space: nowrap;
+}
+.brand-strip-left .bs-mark {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+.brand-strip-left .bs-mark .dot { color: var(--gold); font-style: italic; }
+.brand-strip-left .bs-greek {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--gold);
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+  letter-spacing: -0.01em;
+}
+.brand-strip-left .bs-pronounce {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute-2);
+}
+.brand-strip-right {
+  font-size: 15px;
+  color: var(--bone);
+  line-height: 1.55;
+  max-width: 720px;
+}
+.brand-strip-right em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+/* ====== Practice Atlas — 10-vertical showcase ====== */
+.atlas-head {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.atlas-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.atlas-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 5.4vw, 68px);
+  font-variation-settings: "opsz" 96, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 22px;
+  color: var(--cream);
+}
+.atlas-title em {
+  font-style: italic;
+  color: var(--gold-bright);
+  font-variation-settings: "opsz" 96, "SOFT" 100, "WONK" 1;
+}
+.atlas-subhead {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-style: italic;
+  font-variation-settings: "opsz" 48, "SOFT" 100, "WONK" 1;
+  color: var(--gold-bright);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-top: -4px;
+  margin-bottom: 26px;
+}
+.atlas-lede {
+  font-size: 16px;
+  color: var(--bone);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.atlas-lede em { color: var(--gold); font-style: italic; }
+.atlas-receipts {
+  font-size: 13px;
+  color: var(--mute-2);
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 18px auto 0;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+}
+.atlas-receipts em {
+  color: var(--gold);
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.atlas-tile {
+  background: var(--ink);
+  padding: 28px 24px 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  transition: background 0.35s ease;
+}
+.atlas-tile:hover {
+  background: rgba(28, 33, 40, 0.7);
+}
+.atlas-tile.deep-credential {
+  background: linear-gradient(180deg, var(--ink), rgba(28, 33, 40, 0.65));
+}
+.atlas-tile.deep-credential:hover {
+  background: linear-gradient(180deg, var(--ink), rgba(201, 168, 106, 0.06));
+}
+.atlas-tile .at-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--gold-deep);
+  margin-bottom: 18px;
+}
+.atlas-tile .at-name {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-variation-settings: "opsz" 36, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-bottom: 14px;
+  font-weight: 400;
+  text-wrap: balance;
+}
+.atlas-tile .at-name .amp {
+  color: var(--gold);
+  font-style: italic;
+}
+.atlas-tile .at-lever {
+  font-size: 13px;
+  color: var(--bone);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+.atlas-tile .at-flag {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(212, 188, 138, 0.18);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .atlas-grid { grid-template-columns: repeat(2, 1fr); }
+  .atlas-tile { min-height: 200px; }
+}
+@media (max-width: 640px) {
+  .atlas-grid { grid-template-columns: 1fr; }
+  .atlas-tile { min-height: auto; padding: 22px 20px 26px; }
+  .brand-strip { grid-template-columns: 1fr; gap: 24px; }
+  .brand-strip-left { flex-wrap: wrap; gap: 12px; }
+}
+
 /* ====== Ticker ====== */
 .ticker {
   border-top: 1px solid var(--line);
@@ -1814,7 +2012,7 @@ h1.hero-title {
   <div class="brand">
     <div class="mark">Phronisi<span class="dot">.</span></div>
     <div class="tagline-stack">
-      <div>AI Specialist · Indigenous &amp; Multi-industry</div>
+      <div>AI Specialist · Multi-industry &amp; Indigenous</div>
       <div>Finance · Operations · Strategy</div>
     </div>
   </div>
@@ -1837,7 +2035,7 @@ h1.hero-title {
     </div>
 
     <div class="hero-tagline-feature">
-      <span class="line">AI Specialist <span class="sep">·</span> Indigenous <span class="amp">&amp;</span> Multi-industry</span>
+      <span class="line">AI Specialist <span class="sep">·</span> Multi-industry <span class="amp">&amp;</span> Indigenous</span>
       <span class="line">Finance <span class="sep">·</span> Operations <span class="sep">·</span> Strategy</span>
     </div>
 
@@ -1855,43 +2053,98 @@ h1.hero-title {
   </div>
 </section>
 
-<!-- ============ TRIPARTITE PLAQUE ============ -->
-<section class="etymology">
+<!-- ============ PRACTICE ATLAS (replaces tripartite plaque) ============ -->
+<section class="etymology atlas-section">
   <div class="container">
-    <div class="etym-grid">
 
-      <div class="etym-cell">
-        <div class="head"><span class="ord">01 ·</span> The mark</div>
-        <div class="title">Phronisi<span class="dot">.</span></div>
-        <div class="meta-row">
-          <span class="greek">φρόνηση</span>
-          <span class="pronounce">FROH &middot; nee &middot; see</span>
-        </div>
-        <div class="desc">
-          Aristotle&rsquo;s word for <em>practical wisdom</em> &mdash; the wisdom of <strong>acting well in the specific case</strong>. Distinct from <em>sophia</em> (theory) and <em>techne</em> (craft). The third thing &mdash; and the work the practice installs.
-        </div>
+    <!-- Brand strip: preserves the Aristotelian etymology in compressed form -->
+    <div class="brand-strip">
+      <div class="brand-strip-left">
+        <span class="bs-mark">Phronisi<span class="dot">.</span></span>
+        <span class="bs-greek">φρόνηση</span>
+        <span class="bs-pronounce">FROH · nee · see</span>
+      </div>
+      <div class="brand-strip-right">
+        <em>Aristotle&rsquo;s word for practical wisdom.</em> Distinct from <em>sophia</em> (theory) and <em>techne</em> (craft). The third thing &mdash; and the work the practice installs.
+      </div>
+    </div>
+
+    <!-- Practice Atlas: 10-vertical typographic showcase -->
+    <div class="atlas-head">
+      <div class="atlas-eyebrow">§ The Practice Atlas</div>
+      <h2 class="atlas-title">Ten verticals. <em>One operator.</em></h2>
+      <div class="atlas-subhead">Same disciplines, different P&amp;Ls.</div>
+      <p class="atlas-lede">
+        The cross-industry intuition is the practice. A senior credit memo, a defence-procurement value proposition, a hospitality renovation proforma, and an Indigenous joint-venture agreement do not look the same on the page. The disciplines that make each of them defensible are recognisably the same.
+      </p>
+      <p class="atlas-receipts">
+        Currently delivering in three of these sectors simultaneously (named below). Three sectors are marked as <em>anchored credentials</em>.
+      </p>
+    </div>
+
+    <div class="atlas-grid">
+
+      <div class="atlas-tile">
+        <div class="at-num">01</div>
+        <h3 class="at-name">Construction <span class="amp">&amp;</span> Infrastructure</h3>
+        <div class="at-lever">RFI, change-order, daily-report automation. Project drift visible before cost-to-complete.</div>
       </div>
 
-      <div class="etym-cell">
-        <div class="head"><span class="ord">02 ·</span> The specialty</div>
-        <div class="title"><em>Indigenous</em> Finance</div>
-        <div class="meta-row">
-          <span class="pronounce">Section 35 &middot; UNDRIP &middot; DRIPA &middot; OCAP&reg;</span>
-        </div>
-        <div class="desc">
-          Section 35, UNDRIP, DRIPA, OCAP&reg;, FNFMA, FNFA, ITB &mdash; <strong>applied to live commercial work</strong>. The hardest commercial environment in Canadian finance, and the practice&rsquo;s deepest credential.
-        </div>
+      <div class="atlas-tile">
+        <div class="at-num">02</div>
+        <h3 class="at-name">Defence <span class="amp">&amp;</span> Aerospace</h3>
+        <div class="at-lever">RFP drafting, ITB / value-proposition modelling, PSPC compliance documentation.</div>
       </div>
 
-      <div class="etym-cell">
-        <div class="head"><span class="ord">03 ·</span> The practice</div>
-        <div class="title"><em>Multi-industry</em> Practice</div>
-        <div class="meta-row">
-          <span class="pronounce">Finance &middot; Operations &middot; Strategy</span>
-        </div>
-        <div class="desc">
-          Across ten sectors &mdash; financial institutions, real estate, construction, professional services, defence, hospitality, energy, government, foundations, and Indigenous economic development. <strong>The breadth is the moat.</strong>
-        </div>
+      <div class="atlas-tile">
+        <div class="at-num">03</div>
+        <h3 class="at-name">Energy <span class="amp">&amp;</span> Resources</h3>
+        <div class="at-lever">ESG reporting (CSDS, GRI, TNFD, TCFD), regulatory filings, operations data synthesis.</div>
+      </div>
+
+      <div class="atlas-tile deep-credential">
+        <div class="at-num">04</div>
+        <h3 class="at-name">Financial Institutions</h3>
+        <div class="at-lever">Credit memos, KYC / AML triage, OSFI E-23 drafting. 30&ndash;50% lender desk time recoverable.</div>
+        <div class="at-flag">Anchor vertical &mdash; OSFI E-23 May 2027 forcing function</div>
+      </div>
+
+      <div class="atlas-tile">
+        <div class="at-num">05</div>
+        <h3 class="at-name">Foundations <span class="amp">&amp;</span> Non-Profits</h3>
+        <div class="at-lever">Grant proposals, funder narratives, impact reporting, board governance documentation.</div>
+      </div>
+
+      <div class="atlas-tile">
+        <div class="at-num">06</div>
+        <h3 class="at-name">Government <span class="amp">&amp;</span> Crowns</h3>
+        <div class="at-lever">Briefing and decision notes, policy synthesis, FOI / ATIP triage and severing.</div>
+      </div>
+
+      <div class="atlas-tile">
+        <div class="at-num">07</div>
+        <h3 class="at-name">Hospitality <span class="amp">&amp;</span> Tourism</h3>
+        <div class="at-lever">Multilingual guest correspondence, revenue management, reputation monitoring.</div>
+      </div>
+
+      <div class="atlas-tile deep-credential">
+        <div class="at-num">08</div>
+        <h3 class="at-name">Indigenous <span class="amp">Econ-Dev</span></h3>
+        <div class="at-lever">Board packages, JVA review, ISC / CORP reporting. 4&ndash;6&times; CFO output multiplier.</div>
+        <div class="at-flag">Deepest credential &mdash; the practice&rsquo;s anchor specialty</div>
+      </div>
+
+      <div class="atlas-tile deep-credential">
+        <div class="at-num">09</div>
+        <h3 class="at-name">Professional Services</h3>
+        <div class="at-lever">Document review, working-paper documentation, client intake and conflict checks.</div>
+        <div class="at-flag">CPABC-validated curriculum &mdash; Fall 2026</div>
+      </div>
+
+      <div class="atlas-tile">
+        <div class="at-num">10</div>
+        <h3 class="at-name">Real Estate Development</h3>
+        <div class="at-lever">Proforma generation, sensitivity, waterfall modelling, lender package drafting.</div>
       </div>
 
     </div>
@@ -2002,7 +2255,7 @@ h1.hero-title {
       <div class="service-row">
         <div class="ix">/ 05</div>
         <div class="name">The <em>Keynote</em></div>
-        <div class="desc">A conference or industry-day keynote on AI in Indigenous finance, AI for the senior finance executive, or the practitioner's path from CFO to builder. Speaking history available on request.</div>
+        <div class="desc">A conference or industry-day keynote on AI for the senior finance executive, the practitioner's path from CFO to builder, or AI in Indigenous finance. Speaking history available on request.</div>
         <div class="scope">
           <span class="duration">45 &mdash; 60 min</span>
           <span class="price">Speaking fee on request</span>
@@ -2587,15 +2840,15 @@ h1.hero-title {
   <div class="foot-forthcoming">
     <span class="ff-label">Forthcoming</span>
     <span class="ff-sep">·</span>
-    <a href="/igf">The Indigenous AI Governance Framework</a>
-    <span class="ff-sep">/</span>
     <a href="/e23">The OSFI E-23 Implementation Guide</a>
+    <span class="ff-sep">/</span>
+    <a href="/igf">The Indigenous AI Governance Framework</a>
   </div>
   <div class="foot-row">
     <div class="foot-brand">
       <span>Phronisi<span style="color:var(--gold);">.</span></span>
       <span class="foot-tag">
-        <span>AI Specialist · Indigenous &amp; Multi-industry</span>
+        <span>AI Specialist · Multi-industry &amp; Indigenous</span>
         <span>Finance · Operations · Strategy</span>
       </span>
     </div>
