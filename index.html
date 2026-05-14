@@ -397,20 +397,6 @@ h1.hero-title {
   font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
   margin: 0 2px;
 }
-.hero-tagline-feature::before {
-  content: "§ THE LOCKED TAGLINE";
-  position: absolute;
-  top: -8px;
-  right: 0;
-  background: var(--ink);
-  padding: 2px 12px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  font-weight: 400;
-}
-
 /* ====== Ticker ====== */
 .ticker {
   border-top: 1px solid var(--line);
@@ -439,104 +425,6 @@ h1.hero-title {
 .ticker-item .val { color: var(--gold); font-size: 14px; }
 .ticker-item::after { content: "✦"; color: var(--gold-deep); margin-left: 40px; }
 @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* ====== Authority Anchors ====== */
-.authority-anchors {
-  background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
-  padding: 96px 0 88px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  position: relative;
-}
-.authority-anchors::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 80% 30%, rgba(201, 168, 106, 0.08), transparent 55%);
-  pointer-events: none;
-}
-.authority-anchors .container { position: relative; z-index: 2; }
-.authority-anchors .section-head .index { color: var(--gold); }
-.anchor-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.anchor-card {
-  position: relative;
-  display: block;
-  padding: 32px 28px 28px;
-  background: rgba(28, 33, 40, 0.55);
-  border: 1px solid var(--line);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.35s ease;
-}
-.anchor-card:hover {
-  background: rgba(28, 33, 40, 0.85);
-  border-color: var(--gold-deep);
-  transform: translateY(-2px);
-}
-.anchor-flag {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  padding: 5px 11px;
-  margin-bottom: 22px;
-  font-weight: 500;
-}
-.anchor-flag.published {
-  background: rgba(201, 168, 106, 0.12);
-  color: var(--gold-bright);
-  border: 1px solid rgba(201, 168, 106, 0.4);
-}
-.anchor-flag.forthcoming {
-  background: transparent;
-  color: var(--mute-2);
-  border: 1px dashed rgba(212, 188, 138, 0.30);
-}
-.anchor-card h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 26px;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
-  margin-bottom: 14px;
-  font-variation-settings: "opsz" 36, "SOFT" 30, "WONK" 1;
-  color: var(--cream);
-}
-.anchor-card h3 em { color: var(--gold-bright); font-style: italic; }
-.anchor-card p {
-  font-size: 14px;
-  color: var(--bone);
-  line-height: 1.55;
-  margin-bottom: 22px;
-  min-height: 4.5em;
-}
-.anchor-card .anchor-cta {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-.anchor-card .anchor-cta .arr {
-  font-size: 16px;
-  transition: transform 0.3s ease;
-}
-.anchor-card:hover .anchor-cta { color: var(--gold-bright); }
-.anchor-card:hover .anchor-cta .arr { transform: translateX(4px); }
-@media (max-width: 1024px) {
-  .anchor-grid { grid-template-columns: 1fr; gap: 14px; }
-  .authority-anchors { padding: 64px 0; }
-  .anchor-card p { min-height: 0; }
-}
 
 /* ====== Proposition ====== */
 .proposition {
@@ -1815,11 +1703,11 @@ h1.hero-title {
 
 /* ====== Footer ====== */
 .foot {
-  padding: 40px 48px;
+  padding: 32px 48px 36px;
   border-top: 1px solid var(--line);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 22px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -1853,6 +1741,38 @@ h1.hero-title {
   border-left: 1px solid var(--line);
   line-height: 1.4;
 }
+.foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.foot-forthcoming {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: baseline;
+}
+.foot-forthcoming .ff-label { color: var(--gold-deep); }
+.foot-forthcoming .ff-sep { color: var(--gold-deep); }
+.foot-forthcoming a {
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.25s, border-color 0.25s;
+}
+.foot-forthcoming a:hover {
+  color: var(--gold);
+  border-color: var(--gold-deep);
+}
 
 /* ====== Responsive ====== */
 @media (max-width: 1024px) {
@@ -1862,6 +1782,8 @@ h1.hero-title {
   .nav-links a:not(.cta) { display: none; }
   .brand .tagline-stack { display: none; }
   .foot-brand .foot-tag { display: none; }
+  .foot-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .foot { padding: 28px 32px; }
   .hero-bottom { grid-template-columns: 1fr; gap: 40px; }
   .hero-cta-row { align-items: flex-start; }
   .section-head { grid-template-columns: 1fr; gap: 28px; }
@@ -2000,7 +1922,7 @@ h1.hero-title {
     <div class="eyebrow">§ The Proposition</div>
     <h2 class="prop-headline">
       AI is the largest operating-margin expansion event <em>since the spreadsheet.</em>
-      The question is no longer whether &mdash; it is who installs it, how fast, and how defensibly. The wrong answer costs you the decade.
+      The question is no longer whether &mdash; it is who installs it, how fast, and how defensibly.
     </h2>
 
     <div class="prop-grid">
@@ -2110,10 +2032,10 @@ h1.hero-title {
         <h3>CPAs, CAFMs, designation-holders</h3>
         <div class="prov">Designation-defensible AI fluency, CPD-credit-ready, validated by CPABC.</div>
         <ul>
-          <li>Document review, due-diligence synthesis, and discovery preparation.</li>
-          <li>Client intake, engagement letters, and conflict checks at intake speed.</li>
-          <li>Working-paper documentation that holds up to peer review and inspection.</li>
-          <li>Research and precedent retrieval grounded in your own internal library.</li>
+          <li>Curriculum design and module structure for CPD-credit-ready delivery, with versioned materials and an annual refresh cycle.</li>
+          <li>Working-paper documentation templates that hold up to peer review and inspection by professional standards bodies.</li>
+          <li>Instructor delivery &mdash; live virtual or in-person &mdash; by a senior-finance practitioner who builds production AI systems, not by a faculty contractor.</li>
+          <li>Designation-defensible content built around the Profit Formula, the Triangulated Lens, and CAS implications. Validated by CPABC.</li>
         </ul>
         <div class="anchor-row">
           <span class="anchor-label">Anchor asset</span><strong>CPABC curriculum validation, Fall 2026.</strong>
@@ -2473,7 +2395,7 @@ h1.hero-title {
           <span>CMA</span>
           <span>CF</span>
           <span>REV</span>
-          <span>CAFM Cand.</span>
+          <span>CAFM</span>
         </div>
       </div>
 
@@ -2662,14 +2584,23 @@ h1.hero-title {
 
 <!-- ============ FOOTER ============ -->
 <footer class="foot">
-  <div class="foot-brand">
-    <span>Phronisi<span style="color:var(--gold);">.</span></span>
-    <span class="foot-tag">
-      <span>AI Specialist · Indigenous &amp; Multi-industry</span>
-      <span>Finance · Operations · Strategy</span>
-    </span>
+  <div class="foot-forthcoming">
+    <span class="ff-label">Forthcoming</span>
+    <span class="ff-sep">·</span>
+    <a href="/igf">The Indigenous AI Governance Framework</a>
+    <span class="ff-sep">/</span>
+    <a href="/e23">The OSFI E-23 Implementation Guide</a>
   </div>
-  <div>© 2026 · Victoria, BC &nbsp; · &nbsp; Operating on Coast Salish territory</div>
+  <div class="foot-row">
+    <div class="foot-brand">
+      <span>Phronisi<span style="color:var(--gold);">.</span></span>
+      <span class="foot-tag">
+        <span>AI Specialist · Indigenous &amp; Multi-industry</span>
+        <span>Finance · Operations · Strategy</span>
+      </span>
+    </div>
+    <div>© 2026 · Victoria, BC &nbsp; · &nbsp; Operating on Coast Salish territory</div>
+  </div>
 </footer>
 
 <script>
