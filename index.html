@@ -397,20 +397,6 @@ h1.hero-title {
   font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
   margin: 0 2px;
 }
-.hero-tagline-feature::before {
-  content: "§ THE LOCKED TAGLINE";
-  position: absolute;
-  top: -8px;
-  right: 0;
-  background: var(--ink);
-  padding: 2px 12px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  font-weight: 400;
-}
-
 /* ====== Ticker ====== */
 .ticker {
   border-top: 1px solid var(--line);
@@ -691,6 +677,69 @@ h1.hero-title {
   text-transform: none;
 }
 
+/* Anchor rows on segment cards (segments variant of industry-card) */
+.industry-card .anchor-row {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 6px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--bone);
+}
+.industry-card .anchor-row + .anchor-row {
+  border-top: 1px dashed rgba(212, 188, 138, 0.10);
+}
+.industry-card .anchor-row .anchor-label {
+  flex: 0 0 110px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 500;
+  padding-top: 2px;
+}
+.industry-card .anchor-row strong {
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: 0;
+}
+.segments .industry-card { padding-bottom: 36px; }
+.segments .industry-card .metric { margin-top: 20px; }
+
+/* "Also serves" band */
+.also-serves {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 36px;
+  align-items: baseline;
+}
+.also-serves .also-head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.also-serves .also-list {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+  line-height: 1.5;
+}
+.also-serves .also-list .dot { color: var(--gold-deep); margin: 0 10px; }
+@media (max-width: 1024px) {
+  .also-serves { grid-template-columns: 1fr; gap: 18px; }
+  .also-serves .also-list { font-size: 18px; }
+  .industry-card .anchor-row .anchor-label { flex: 0 0 90px; }
+}
+
 /* ====== Engagements ====== */
 .engagements { background: var(--ink-2); }
 .case-grid {
@@ -886,6 +935,56 @@ h1.hero-title {
   font-size: 16px;
   color: var(--bone);
   line-height: 1.55;
+}
+
+/* Compressed Builder Evidence variant — overrides for 4-col band */
+.builder-evidence .platform-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.builder-evidence .platform-card {
+  padding: 26px 22px;
+}
+.builder-evidence .platform-card::after {
+  content: "↗";
+  top: 22px;
+  right: 22px;
+  font-size: 18px;
+}
+.builder-evidence .platform-card .url {
+  font-size: 11px;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.builder-evidence .platform-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-variation-settings: "opsz" 36, "WONK" 1;
+  line-height: 1.15;
+}
+.builder-evidence .platform-card .stage {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  padding: 3px 8px;
+  margin-bottom: 14px;
+}
+.builder-evidence .platform-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 100%;
+}
+.builder-evidence .platforms-foot {
+  margin-top: 40px;
+  padding-top: 28px;
+}
+.builder-evidence .platforms-foot .stat {
+  font-size: 30px;
+}
+@media (max-width: 1024px) {
+  .builder-evidence .platform-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .builder-evidence .platform-grid { grid-template-columns: 1fr; }
 }
 
 /* ====== ROI Calculator ====== */
@@ -1494,13 +1593,121 @@ h1.hero-title {
   letter-spacing: 0.06em;
 }
 
-/* ====== Footer ====== */
-.foot {
-  padding: 40px 48px;
-  border-top: 1px solid var(--line);
+/* Three-tier CTA grid */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line-strong);
+}
+.cta-card {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 32px 30px;
+  background: rgba(11, 14, 18, 0.45);
+  border: 1px solid var(--line-strong);
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.35s ease;
+  position: relative;
+}
+.cta-card:first-child {
+  background: linear-gradient(135deg, rgba(201, 168, 106, 0.10), rgba(11, 14, 18, 0.65));
+  border-color: var(--gold-deep);
+}
+.cta-card:hover {
+  border-color: var(--gold);
+  background: rgba(11, 14, 18, 0.75);
+  transform: translateY(-3px);
+}
+.cta-card:first-child:hover {
+  background: linear-gradient(135deg, rgba(201, 168, 106, 0.16), rgba(11, 14, 18, 0.75));
+}
+.cta-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+.cta-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 1;
+  color: var(--cream);
+}
+.cta-card h3 em { color: var(--gold-bright); font-style: italic; }
+.cta-card p {
+  font-size: 14px;
+  color: var(--bone);
+  line-height: 1.55;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+.cta-button {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-weight: 500;
+}
+.cta-button .arr {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+.cta-card:hover .cta-button { color: var(--gold-bright); }
+.cta-card:hover .cta-button .arr { transform: translateX(5px); }
+
+.contact-backup {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: baseline;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+.contact-backup .bk-item { display: inline-flex; gap: 10px; align-items: baseline; }
+.contact-backup .bk-lbl {
+  color: var(--gold-deep);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+}
+.contact-backup .bk-sep { color: var(--gold-deep); }
+.contact-backup a { color: var(--cream); border-bottom: 1px solid var(--gold-deep); padding-bottom: 1px; }
+.contact-backup a:hover { border-color: var(--gold-bright); }
+
+@media (max-width: 1024px) {
+  .cta-grid { grid-template-columns: 1fr; gap: 16px; }
+  .contact-backup { flex-direction: column; gap: 12px; text-align: center; }
+  .contact-backup .bk-sep { display: none; }
+}
+
+/* ====== Footer ====== */
+.foot {
+  padding: 32px 48px 36px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -1534,6 +1741,38 @@ h1.hero-title {
   border-left: 1px solid var(--line);
   line-height: 1.4;
 }
+.foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.foot-forthcoming {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: baseline;
+}
+.foot-forthcoming .ff-label { color: var(--gold-deep); }
+.foot-forthcoming .ff-sep { color: var(--gold-deep); }
+.foot-forthcoming a {
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.25s, border-color 0.25s;
+}
+.foot-forthcoming a:hover {
+  color: var(--gold);
+  border-color: var(--gold-deep);
+}
 
 /* ====== Responsive ====== */
 @media (max-width: 1024px) {
@@ -1543,6 +1782,8 @@ h1.hero-title {
   .nav-links a:not(.cta) { display: none; }
   .brand .tagline-stack { display: none; }
   .foot-brand .foot-tag { display: none; }
+  .foot-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .foot { padding: 28px 32px; }
   .hero-bottom { grid-template-columns: 1fr; gap: 40px; }
   .hero-cta-row { align-items: flex-start; }
   .section-head { grid-template-columns: 1fr; gap: 28px; }
@@ -1579,11 +1820,11 @@ h1.hero-title {
   </div>
   <div class="nav-links">
     <a href="#practice">Practice</a>
-    <a href="#industries">Industries</a>
+    <a href="#segments">Segments</a>
     <a href="#engagements">Engagements</a>
     <a href="#platforms">Platforms</a>
     <a href="#method">Method</a>
-    <a href="#contact" class="cta">Book a session</a>
+    <a href="#contact" class="cta">Begin</a>
   </div>
 </nav>
 
@@ -1595,10 +1836,6 @@ h1.hero-title {
       <div class="right">Victoria, BC · Coast Salish Territory<br>Operating with respect for traditional lands</div>
     </div>
 
-    <h1 class="hero-title">
-      Builder-level AI<br>fluency &mdash; from <em>a CFO<br>who actually ships.</em>
-    </h1>
-
     <div class="hero-tagline-feature">
       <span class="line">AI Specialist <span class="sep">·</span> Indigenous <span class="amp">&amp;</span> Multi-industry</span>
       <span class="line">Finance <span class="sep">·</span> Operations <span class="sep">·</span> Strategy</span>
@@ -1607,12 +1844,11 @@ h1.hero-title {
     <div class="hero-bottom">
       <p class="hero-lede">
         Most AI consultants have never operated a balance sheet. Most CFOs don't write code.
-        <strong>Arthur Kostaras, CPA &middot; CMA &middot; CF &middot; REV &middot; CAFM Cand., does both</strong> &mdash; thirty years of senior finance leadership,
+        <strong>Arthur Kostaras, CPA &middot; CMA &middot; CF &middot; REV &middot; CAFM, does both</strong> &mdash; thirty years of senior finance leadership,
         four production AI platforms, and a published methodology. AI counsel for institutions
-        that have run out of patience for theory.
+        that have run out of patience for theory. <strong>Now booking Q3 &mdash; Q4 2026.</strong>
       </p>
       <div class="hero-cta-row">
-        <div class="sub">Now booking Q3 &mdash; Q4 2026</div>
         <a href="#contact" class="big">Start a conversation →</a>
       </div>
     </div>
@@ -1670,13 +1906,13 @@ h1.hero-title {
     <div class="ticker-item"><span class="val">CPA · CMA · CF · REV</span> Designations</div>
     <div class="ticker-item"><span class="val">10</span> Industries served</div>
     <div class="ticker-item"><span class="val">Author</span> The Kostaras Method</div>
-    <div class="ticker-item"><span class="val">CAFM</span> Candidate · AFOA Canada</div>
+    <div class="ticker-item"><span class="val">CAFM</span> · AFOA Canada</div>
     <div class="ticker-item"><span class="val">$705M+</span> Career capital formation</div>
     <div class="ticker-item"><span class="val">4</span> AI platforms in production</div>
     <div class="ticker-item"><span class="val">CPA · CMA · CF · REV</span> Designations</div>
     <div class="ticker-item"><span class="val">10</span> Industries served</div>
     <div class="ticker-item"><span class="val">Author</span> The Kostaras Method</div>
-    <div class="ticker-item"><span class="val">CAFM</span> Candidate · AFOA Canada</div>
+    <div class="ticker-item"><span class="val">CAFM</span> · AFOA Canada</div>
   </div>
 </div>
 
@@ -1686,7 +1922,7 @@ h1.hero-title {
     <div class="eyebrow">§ The Proposition</div>
     <h2 class="prop-headline">
       AI is the largest operating-margin expansion event <em>since the spreadsheet.</em>
-      The question is no longer whether &mdash; it is who installs it, how fast, and how defensibly. The wrong answer costs you the decade.
+      The question is no longer whether &mdash; it is who installs it, how fast, and how defensibly.
     </h2>
 
     <div class="prop-grid">
@@ -1715,7 +1951,7 @@ h1.hero-title {
     <div class="section-head">
       <div>
         <div class="index"><span class="num">01 /</span> The Practice</div>
-        <h2 class="title">Three formats. <em>One method.</em></h2>
+        <h2 class="title">Five formats. <em>One method.</em></h2>
       </div>
       <p class="blurb">
         The work scales from a single ninety-minute briefing to a full fifteen-week implementation sprint. Every engagement begins with the same diagnostic and ends with operating capability transferred to your team.
@@ -1776,23 +2012,45 @@ h1.hero-title {
   </div>
 </section>
 
-<!-- ============ INDUSTRIES ============ -->
-<section class="industries" id="industries">
+<!-- ============ BUYER SEGMENTS (formerly Industries) ============ -->
+<section class="industries segments" id="segments">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="index"><span class="num">02 /</span> Industries</div>
-        <h2 class="title">Ten sectors. <em>Ten levers.</em></h2>
+        <div class="index"><span class="num">02 /</span> Segments</div>
+        <h2 class="title">Four buyer segments. <em>One operator.</em></h2>
       </div>
       <p class="blurb">
-        Where AI is moving operating margin in 2026 &mdash; with the specific drivers, not the hype. The list below is not theoretical; it is the work being done with clients today.
+        The practice serves four buyer segments anchored to live engagements and forthcoming publications. Selected work also spans six adjacent sectors. The breadth is the moat; the depth is the credential.
       </p>
     </div>
 
     <div class="industry-grid">
 
       <div class="industry-card">
-        <div class="idx">/ 01 &nbsp; Financial Institutions</div>
+        <div class="idx">/ A &nbsp; Professional Development</div>
+        <h3>CPAs, CAFMs, designation-holders</h3>
+        <div class="prov">Designation-defensible AI fluency, CPD-credit-ready, validated by CPABC.</div>
+        <ul>
+          <li>Curriculum design and module structure for CPD-credit-ready delivery, with versioned materials and an annual refresh cycle.</li>
+          <li>Working-paper documentation templates that hold up to peer review and inspection by professional standards bodies.</li>
+          <li>Instructor delivery &mdash; live virtual or in-person &mdash; by a senior-finance practitioner who builds production AI systems, not by a faculty contractor.</li>
+          <li>Designation-defensible content built around the Profit Formula, the Triangulated Lens, and CAS implications. Validated by CPABC.</li>
+        </ul>
+        <div class="anchor-row">
+          <span class="anchor-label">Anchor asset</span><strong>CPABC curriculum validation, Fall 2026.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Entry product</span><strong>The Course or The Keynote.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Bodies served</span><strong>CPABC, CPA Canada, AFOA Canada, ICD, CFA Society Canada.</strong>
+        </div>
+        <div class="metric"><span>Indicative impact</span><strong>8 &ndash; 15 h / week per professional reclaimed</strong></div>
+      </div>
+
+      <div class="industry-card">
+        <div class="idx">/ B &nbsp; OSFI-Regulated Financial Institutions</div>
         <h3>Banks, credit unions, trust companies</h3>
         <div class="prov">Credit memos that write themselves while your lender keeps the relationship.</div>
         <ul>
@@ -1801,25 +2059,21 @@ h1.hero-title {
           <li>Regulatory drafting against OSFI E-23, FINTRAC, and CSA obligations.</li>
           <li>Customer-correspondence and disclosure generation, multilingual where required.</li>
         </ul>
+        <div class="anchor-row">
+          <span class="anchor-label">Anchor asset</span><strong>OSFI E-23 Implementation Guide, forthcoming Q4 2026.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Entry product</span><strong>The E-23 Diagnostic.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Industries served</span><strong>Banks, credit unions, trust companies, Indigenous-owned financial institutions.</strong>
+        </div>
         <div class="metric"><span>Indicative impact</span><strong>30 &ndash; 50% of lender desk time recoverable</strong></div>
       </div>
 
       <div class="industry-card">
-        <div class="idx">/ 02 &nbsp; Indigenous Economic Development</div>
-        <h3>Econ-dev corporations, band-owned entities</h3>
-        <div class="prov">Board packages, JVAs, and grant reporting at one-fifth the desk time.</div>
-        <ul>
-          <li>Chief &amp; Council briefing notes and Board packages, written in your house voice.</li>
-          <li>JVA review, redlining, and clause-comparison against your standard precedent.</li>
-          <li>ISC / CORP / NRT application drafting and reporting, fully reconcilable.</li>
-          <li>OCAP&reg;-respecting research synthesis and Indigenous-rights analysis.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>4 &ndash; 6&times; CFO output multiplier</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 03 &nbsp; Construction &amp; Infrastructure</div>
-        <h3>General contractors, project managers, developers</h3>
+        <div class="idx">/ C &nbsp; Industrial, Construction &amp; Supply Chain</div>
+        <h3>General contractors, mid-market industrials</h3>
         <div class="prov">Project drift, visible before it hits the cost-to-complete.</div>
         <ul>
           <li>RFI, change-order, and submittal processing with forensic anomaly flagging.</li>
@@ -1827,101 +2081,59 @@ h1.hero-title {
           <li>Subcontractor compliance, prequalification, and bonding documentation.</li>
           <li>Drawings comparison, revision tracking, and dispute-readiness packs.</li>
         </ul>
+        <div class="anchor-row">
+          <span class="anchor-label">Anchor asset</span><strong>Construction sector case study, delivered Q3 &mdash; Q4 2026.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Entry product</span><strong>The Implementation Bridge.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Industries served</span><strong>GCs, PMs, developers, mid-market industrials, defence supply chain.</strong>
+        </div>
         <div class="metric"><span>Indicative impact</span><strong>15 &ndash; 25% G&amp;A reduction in 12 months</strong></div>
       </div>
 
       <div class="industry-card">
-        <div class="idx">/ 04 &nbsp; Professional Services</div>
-        <h3>Accounting, legal, advisory firms</h3>
-        <div class="prov">Billable hours recovered without losing the partner's judgment.</div>
+        <div class="idx">/ D &nbsp; Indigenous Economic Development</div>
+        <h3>Econ-dev corporations, band-owned entities, NSF</h3>
+        <div class="prov">Board packages, JVAs, and grant reporting at one-fifth the desk time.</div>
         <ul>
-          <li>Document review, due-diligence synthesis, and discovery preparation.</li>
-          <li>Client intake, engagement letters, and conflict checks at intake speed.</li>
-          <li>Working-paper documentation that holds up to peer review and inspection.</li>
-          <li>Research and precedent retrieval grounded in your own internal library.</li>
+          <li>Chief &amp; Council briefing notes and Board packages, written in your house voice.</li>
+          <li>JVA review, redlining, and clause-comparison against your standard precedent.</li>
+          <li>ISC / CORP / NRT application drafting and reporting, fully reconcilable.</li>
+          <li>OCAP&reg;-respecting research synthesis and Indigenous-rights analysis.</li>
         </ul>
-        <div class="metric"><span>Indicative impact</span><strong>8 &ndash; 15 h / week per professional</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 05 &nbsp; Real Estate Development</div>
-        <h3>Developers, REITs, land trusts</h3>
-        <div class="prov">Proformas modelled in minutes, scenarios stress-tested in hours.</div>
-        <ul>
-          <li>Proforma generation, sensitivity analysis, and waterfall modelling.</li>
-          <li>Zoning, entitlement, and approval-process research and tracking.</li>
-          <li>Construction-draw monitoring against budget and schedule.</li>
-          <li>Lender package and Investment Committee memo drafting.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>Decision cycle: weeks &rarr; days</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 06 &nbsp; Hospitality &amp; Tourism</div>
-        <h3>Hotels, restaurants, tour operators</h3>
-        <div class="prov">Guest communications at concierge grade, in every language.</div>
-        <ul>
-          <li>Multilingual guest correspondence, review responses, and FAQs.</li>
-          <li>Revenue management, dynamic pricing, and forecast modelling.</li>
-          <li>Online reputation monitoring and brand-voice response drafting.</li>
-          <li>Booking-data analysis, cohort segmentation, and direct-channel growth.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>20 &ndash; 30% guest-services labour reduction</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 07 &nbsp; Defence &amp; Aerospace</div>
-        <h3>Primes, sub-tier suppliers, Indigenous partners</h3>
-        <div class="prov">Bids, ITB, and compliance documentation &mdash; audit-defensible by design.</div>
-        <ul>
-          <li>RFP and bid-package drafting with ITB / value-proposition modelling.</li>
-          <li>Procurement compliance documentation (PSPC, TBS, NSP).</li>
-          <li>Industrial &amp; Technological Benefits (ITB / IRB / VP) reporting.</li>
-          <li>Controlled Goods Program and CGP administration support.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>40%+ proposal-cycle compression</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 08 &nbsp; Energy &amp; Resources</div>
-        <h3>Mining, oil &amp; gas, renewables, utilities</h3>
-        <div class="prov">ESG, regulatory, and ops reporting &mdash; from days to hours.</div>
-        <ul>
-          <li>ESG and sustainability reporting (CSDS, GRI, TNFD, TCFD).</li>
-          <li>Regulatory filings across CER, BCER, AER, and provincial regulators.</li>
-          <li>Operations data synthesis, KPI dashboards, and anomaly detection.</li>
-          <li>Indigenous consultation logs and IBA documentation pipelines.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>Reporting cycle: days &rarr; hours</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 09 &nbsp; Government &amp; Crowns</div>
-        <h3>Federal, provincial, municipal, Crown corporations</h3>
-        <div class="prov">Briefing notes and citizen services at public-sector quality.</div>
-        <ul>
-          <li>Briefing notes, decision notes, and ministerial correspondence.</li>
-          <li>Policy and legislative synthesis grounded in primary sources.</li>
-          <li>Grant administration and recipient-communications workflows.</li>
-          <li>FOI / ATIP intake, triage, and severing assistance.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>50%+ briefing-cycle compression</strong></div>
-      </div>
-
-      <div class="industry-card">
-        <div class="idx">/ 10 &nbsp; Foundations &amp; Non-Profits</div>
-        <h3>Charities, foundations, NGOs</h3>
-        <div class="prov">Grant capacity, doubled &mdash; without growing the team.</div>
-        <ul>
-          <li>Grant proposals, funder narratives, and Letters of Intent.</li>
-          <li>Impact reporting and donor stewardship communications.</li>
-          <li>Program-data analysis and outcomes-tracking dashboards.</li>
-          <li>Board governance and committee documentation.</li>
-        </ul>
-        <div class="metric"><span>Indicative impact</span><strong>2 &ndash; 4&times; grant capacity per FTE</strong></div>
+        <div class="anchor-row">
+          <span class="anchor-label">Anchor asset</span><strong>The Indigenous AI Governance Framework, forthcoming (in consultation).</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Entry product</span><strong>The Briefing.</strong>
+        </div>
+        <div class="anchor-row">
+          <span class="anchor-label">Industries served</span><strong>Indigenous econ-dev corporations, band-owned entities, Nation-owned financial institutions.</strong>
+        </div>
+        <div class="metric"><span>Indicative impact</span><strong>4 &ndash; 6&times; CFO output multiplier</strong></div>
       </div>
 
     </div>
+
+    <div class="also-serves">
+      <div class="also-head">Selected engagements also span:</div>
+      <div class="also-list">
+        <span>Real Estate Development</span>
+        <span class="dot">·</span>
+        <span>Hospitality &amp; Tourism</span>
+        <span class="dot">·</span>
+        <span>Defence &amp; Aerospace</span>
+        <span class="dot">·</span>
+        <span>Energy &amp; Resources</span>
+        <span class="dot">·</span>
+        <span>Government &amp; Crowns</span>
+        <span class="dot">·</span>
+        <span>Foundations &amp; Non-Profits</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1934,7 +2146,7 @@ h1.hero-title {
         <h2 class="title">In flight, <em>2026.</em></h2>
       </div>
       <p class="blurb">
-        A snapshot of current work across the three practice formats. Each engagement is run personally; no associates, no sub-contractors, no junior delivery.
+        A snapshot of current work across three of the practice's five formats. Each engagement is run personally; no associates, no sub-contractors, no junior delivery.
       </p>
     </div>
 
@@ -1993,22 +2205,18 @@ h1.hero-title {
   </div>
 </section>
 
-<!-- ============ PLATFORMS ============ -->
-<section class="platforms" id="platforms">
+<!-- ============ BUILDER EVIDENCE (formerly Platforms) ============ -->
+<section class="platforms builder-evidence" id="platforms">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="index"><span class="num">04 /</span> Platforms</div>
-        <h2 class="title">Four built. <em>Operating now.</em></h2>
+        <div class="index"><span class="num">04 /</span> Builder evidence</div>
+        <h2 class="title">Builder <em>evidence.</em></h2>
       </div>
       <p class="blurb">
-        Four AI-powered platforms designed, built, and operated personally on a shared Railway / Node.js / PostgreSQL stack. Not portfolio pieces. Live, instrumented infrastructure.
+        Four production AI-augmented platforms, operating on a shared Railway / Node.js / PostgreSQL stack. Live infrastructure, not portfolio pieces &mdash; supporting evidence for the practice.
       </p>
     </div>
-
-    <p class="platforms-intro">
-      Why does it matter that a CFO has shipped four platforms? Because the question every client should ask of any AI advisor is &mdash; <strong>have you ever owned the consequences of an AI decision through to operation?</strong> Most haven't. These platforms are the proof that the counsel has been earned the hard way.
-    </p>
 
     <div class="platform-grid">
       <a class="platform-card" href="https://canadaaccountants.app" target="_blank">
@@ -2187,7 +2395,7 @@ h1.hero-title {
           <span>CMA</span>
           <span>CF</span>
           <span>REV</span>
-          <span>CAFM Cand.</span>
+          <span>CAFM</span>
         </div>
       </div>
 
@@ -2339,38 +2547,60 @@ h1.hero-title {
       Move on AI <em>before</em> your competitors do.
     </h2>
 
-    <div class="contact-grid">
-      <div class="contact-cell">
-        <div class="lbl">Begin a conversation</div>
-        <div class="val">
-          <a href="mailto:arthur@phronisi.app">arthur@phronisi.app</a>
-        </div>
-        <div class="sub">Personal-practice contact · response within 24 hours, weekdays</div>
-      </div>
-      <div class="contact-cell">
-        <div class="lbl">By telephone</div>
-        <div class="val">+1 (647) 956 &middot; 7290</div>
-        <div class="sub">PT · text or voice</div>
-      </div>
-      <div class="contact-cell">
-        <div class="lbl">Booking</div>
-        <div class="val">Q3 — Q4 2026</div>
-        <div class="sub">2–4 new engagements per quarter</div>
-      </div>
+    <div class="cta-grid">
+
+      <a class="cta-card" href="https://calendly.com/arthur-phronisi/diagnostic-call"><!-- CALENDLY_PLACEHOLDER -->
+        <div class="cta-eyebrow">CTA 01 · Paid</div>
+        <h3>Book a <em>60-minute</em> Diagnostic Call.</h3>
+        <p>For senior leaders evaluating an AI engagement. Scoping, sequencing, and a clear recommendation. Fee on confirmation.</p>
+        <div class="cta-button">Book a Diagnostic <span class="arr">→</span></div>
+      </a>
+
+      <a class="cta-card" href="mailto:arthur@phronisi.app?subject=Briefing%20Inquiry%20%E2%80%94%20Phronisi&body=Hello%20Arthur%2C%0A%0AI%27d%20like%20to%20inquire%20about%20a%2090-minute%20Phronisi%20Briefing%20for%20our%20institution.%0A%0AOrganisation%3A%0AAudience%2Fcohort%3A%0APreferred%20delivery%20window%3A%0ATopic%20focus%20(AI%20fluency%20%2F%20redaction%20%2F%20working%20papers%20%2F%20other)%3A%0A%0AThank%20you%2C%0A">
+        <div class="cta-eyebrow">CTA 02 · Briefing</div>
+        <h3>Inquire about a <em>90-minute</em> Briefing.</h3>
+        <p>For institutional cohorts and senior leadership teams. AI fluency, redaction discipline, working-paper documentation.</p>
+        <div class="cta-button">Inquire <span class="arr">→</span></div>
+      </a>
+
+      <a class="cta-card" href="mailto:arthur@phronisi.app?subject=Subscribe%20to%20The%20Quarterly&body=Please%20add%20me%20to%20The%20Quarterly%20subscription%20list.%0A%0AName%3A%0AOrganisation%3A%0ARole%3A%0A">
+        <div class="cta-eyebrow">CTA 03 · Audience</div>
+        <h3>Subscribe to <em>The Quarterly.</em></h3>
+        <p>Three issues a year. Working notes from active engagements. Notification when the Framework and the E-23 Guide publish.</p>
+        <div class="cta-button">Subscribe <span class="arr">→</span></div>
+      </a>
+
+    </div>
+
+    <div class="contact-backup">
+      <span class="bk-item"><span class="bk-lbl">E</span><a href="mailto:arthur@phronisi.app">arthur@phronisi.app</a></span>
+      <span class="bk-sep">·</span>
+      <span class="bk-item"><span class="bk-lbl">T</span>+1 (647) 956 &middot; 7290</span>
+      <span class="bk-sep">·</span>
+      <span class="bk-item"><span class="bk-lbl">Booking</span>Q3 &mdash; Q4 2026 · 2&ndash;4 new engagements per quarter</span>
     </div>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="foot">
-  <div class="foot-brand">
-    <span>Phronisi<span style="color:var(--gold);">.</span></span>
-    <span class="foot-tag">
-      <span>AI Specialist · Indigenous &amp; Multi-industry</span>
-      <span>Finance · Operations · Strategy</span>
-    </span>
+  <div class="foot-forthcoming">
+    <span class="ff-label">Forthcoming</span>
+    <span class="ff-sep">·</span>
+    <a href="/igf">The Indigenous AI Governance Framework</a>
+    <span class="ff-sep">/</span>
+    <a href="/e23">The OSFI E-23 Implementation Guide</a>
   </div>
-  <div>© 2026 · Victoria, BC &nbsp; · &nbsp; Operating on Coast Salish territory</div>
+  <div class="foot-row">
+    <div class="foot-brand">
+      <span>Phronisi<span style="color:var(--gold);">.</span></span>
+      <span class="foot-tag">
+        <span>AI Specialist · Indigenous &amp; Multi-industry</span>
+        <span>Finance · Operations · Strategy</span>
+      </span>
+    </div>
+    <div>© 2026 · Victoria, BC &nbsp; · &nbsp; Operating on Coast Salish territory</div>
+  </div>
 </footer>
 
 <script>
