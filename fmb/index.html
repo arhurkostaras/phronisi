@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Static Documents, Living Tools — A Showcase for FNFMB · phronisi.app</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --ink-soft: #2C2C2C;
+    --ocean: #0F2A33;
+    --ocean-mid: #1F4451;
+    --stone: #57636A;
+    --stone-soft: #8A949A;
+    --bone: #F5F1E8;
+    --bone-warm: #EFE9DC;
+    --bone-cool: #FAF7F0;
+    --paper: #FFFFFF;
+    --cedar: #7A3B1F;
+    --ochre: #BF8A3D;
+    --ochre-light: #D9B068;
+    --moss: #4A5D3A;
+    --signal-green: #2E7D32;
+    --signal-amber: #E6A923;
+    --signal-red: #B5341C;
+    --line: #DDD3C0;
+    --line-soft: #E8E0D0;
+
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Source Serif 4', Georgia, serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    background: var(--bone-cool);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 14px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .top-bar .brand { color: var(--ochre-light); font-weight: 600; }
+  .top-bar .nav { display: flex; gap: 24px; }
+  .top-bar .nav a {
+    color: var(--stone-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 11px;
+  }
+  .top-bar .nav a:hover { color: var(--ochre-light); }
+  @media (max-width: 768px) { .top-bar .nav { display: none; } }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(180deg, var(--ocean) 0%, var(--ocean-mid) 100%);
+    color: var(--bone);
+    padding: 96px 0 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    border: 1px solid rgba(217,176,104,0.08);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: 5%;
+    width: 380px; height: 380px;
+    border: 1px solid rgba(217,176,104,0.05);
+    border-radius: 50%;
+  }
+  .hero .inner { position: relative; z-index: 2; }
+  .hero .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(48px, 7vw, 84px);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 1000px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ochre-light);
+    font-weight: 400;
+  }
+  .hero .deck {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--bone-warm);
+    max-width: 820px;
+    font-style: italic;
+    margin-bottom: 36px;
+  }
+  .hero .meta {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 36px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(217,176,104,0.2);
+  }
+  @media (max-width: 720px) { .hero .meta { grid-template-columns: 1fr; gap: 18px; } }
+  .hero .meta-item .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    margin-bottom: 6px;
+  }
+  .hero .meta-item .value {
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--bone);
+    font-weight: 500;
+  }
+
+  /* BUILDER STRIP */
+  .builder-strip {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 36px 0;
+    border-top: 1px solid rgba(217,176,104,0.15);
+  }
+  .builder-strip .row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 768px) { .builder-strip .row { grid-template-columns: 1fr; } }
+  .builder-strip .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .builder-strip .apps {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--bone-warm);
+    line-height: 1.6;
+  }
+  .builder-strip .apps strong {
+    color: var(--bone);
+    font-weight: 600;
+  }
+
+  /* SECTION HEADER PATTERN */
+  .section {
+    padding: 96px 0;
+  }
+  .section.alt {
+    background: var(--bone-warm);
+  }
+  .section.dark {
+    background: var(--ocean);
+    color: var(--bone);
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .section.dark .section-num { color: var(--ochre-light); }
+  .section h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+    max-width: 880px;
+  }
+  .section h2 em { font-style: italic; font-weight: 400; color: var(--cedar); }
+  .section.dark h2 em { color: var(--ochre-light); }
+  .section .deck {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--stone);
+    max-width: 760px;
+    font-style: italic;
+    margin-bottom: 48px;
+  }
+  .section.dark .deck { color: var(--bone-warm); }
+
+  /* INVENTORY TABLE */
+  .inventory {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(15,42,51,0.04);
+  }
+  .inventory table { width: 100%; border-collapse: collapse; }
+  .inventory thead th {
+    background: var(--ink);
+    color: var(--bone);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  .inventory tbody tr { border-top: 1px solid var(--line-soft); }
+  .inventory tbody tr:nth-child(even) { background: var(--bone-cool); }
+  .inventory tbody td {
+    padding: 14px 20px;
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  .inventory tbody td.tool {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .inventory tbody td.format { font-style: italic; color: var(--stone); }
+  .inventory tbody td.date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--stone-soft);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .observation-note {
+    margin-top: 40px;
+    padding: 28px 32px;
+    border-left: 4px solid var(--ochre);
+    background: var(--bone);
+    border-radius: 0 8px 8px 0;
+  }
+  .observation-note p {
+    font-family: var(--display);
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ocean);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* TRANSFORMATION CARDS */
+  .transformations { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 16px; }
+  .transformation {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(15,42,51,0.05);
+    transition: all 0.3s;
+  }
+  .transformation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(15,42,51,0.08);
+  }
+  .transformation .head {
+    padding: 28px 32px;
+    background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-mid) 100%);
+    color: var(--bone);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .transformation .num {
+    font-family: var(--display);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--ochre-light);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 56px;
+  }
+  .transformation .head-text h3 {
+    font-family: var(--display);
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .transformation .head-text .tagline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+  }
+  .transformation .body { padding: 28px 32px; }
+  .transformation .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 24px; }
+  @media (max-width: 720px) { .transformation .pair { grid-template-columns: 1fr; } }
+  .transformation .today,
+  .transformation .living {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .transformation .today {
+    background: var(--bone-cool);
+    border-left: 3px solid var(--stone-soft);
+  }
+  .transformation .living {
+    background: var(--bone-warm);
+    border-left: 3px solid var(--cedar);
+  }
+  .transformation .pair .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .transformation .today .label { color: var(--stone); }
+  .transformation .living .label { color: var(--cedar); }
+  .transformation .pair p {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .transformation .benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-soft);
+  }
+  @media (max-width: 720px) { .transformation .benefits { grid-template-columns: 1fr; } }
+  .transformation .benefit { padding: 14px; }
+  .transformation .benefit .b-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .transformation .benefit.member .b-label { color: var(--cedar); }
+  .transformation .benefit.fmb .b-label { color: var(--ocean); }
+  .transformation .benefit p {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* DEMO CALLOUT */
+  .demo-callout {
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ocean) 100%);
+    color: var(--bone);
+    border-radius: 14px;
+    padding: 40px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .demo-callout .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .demo-callout h3 {
+    font-family: var(--display);
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    max-width: 720px;
+    letter-spacing: -0.01em;
+  }
+  .demo-callout h3 em { font-style: italic; color: var(--ochre-light); font-weight: 400; }
+  .demo-callout p {
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--bone-warm);
+    max-width: 760px;
+    margin-bottom: 8px;
+  }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 32px 0 8px;
+  }
+  @media (max-width: 900px) { .demo-grid { grid-template-columns: 1fr; } }
+  .demo-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(217,176,104,0.25);
+    border-radius: 10px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+  }
+  .demo-card:hover {
+    border-color: rgba(217,176,104,0.6);
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+  }
+  .demo-card .demo-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .demo-card .demo-title {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--bone);
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .demo-card .demo-title em { font-style: italic; color: var(--ochre-light); font-weight: 400; }
+  .demo-card .demo-desc {
+    font-family: var(--body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--bone-warm);
+    margin-bottom: 18px;
+    flex: 1;
+  }
+  .demo-card .demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ochre);
+    color: var(--ink);
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+  .demo-card .demo-link:hover {
+    background: var(--ochre-light);
+  }
+  .demo-card .demo-link::after { content: '→'; font-size: 14px; }
+  .live-build-note {
+    margin-top: 28px;
+    padding: 24px 28px;
+    background: rgba(122,59,31,0.18);
+    border-left: 4px solid var(--ochre-light);
+    border-radius: 0 8px 8px 0;
+  }
+  .live-build-note .lb-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .live-build-note p {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--bone-warm);
+    margin: 0;
+    max-width: none;
+  }
+  .live-build-note p strong { color: var(--bone); font-weight: 600; }
+
+  /* AGENDA */
+  .agenda {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(15,42,51,0.04);
+  }
+  .agenda-row {
+    display: grid;
+    grid-template-columns: 130px 220px 1fr;
+    gap: 24px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .agenda-row:last-child { border-bottom: none; }
+  .agenda-row:hover { background: var(--bone-cool); }
+  .agenda-row.break { background: var(--bone-warm); }
+  .agenda-row.break:hover { background: var(--bone); }
+  @media (max-width: 768px) {
+    .agenda-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 22px; }
+  }
+  .agenda-time {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--cedar);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .agenda-title {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ocean);
+  }
+  .agenda-title .roman {
+    color: var(--ochre);
+    font-style: italic;
+    font-weight: 400;
+    margin-right: 8px;
+  }
+  .agenda-desc {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* INTERNAL TEAM CARDS */
+  .internal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+  @media (max-width: 900px) { .internal-grid { grid-template-columns: 1fr; } }
+  .internal-card {
+    background: rgba(245, 241, 232, 0.06);
+    border: 1px solid rgba(217, 176, 104, 0.2);
+    border-radius: 12px;
+    padding: 32px;
+    color: var(--bone);
+  }
+  .internal-card .person {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .internal-card h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--bone);
+  }
+  .internal-card .description {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--bone-warm);
+    margin-bottom: 20px;
+  }
+  .internal-card .impacts {
+    border-top: 1px solid rgba(217, 176, 104, 0.18);
+    padding-top: 16px;
+  }
+  .internal-card .impact {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ochre-light);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .internal-card .impact strong {
+    color: var(--bone);
+    font-weight: 600;
+  }
+
+  /* INVESTMENT */
+  .investment-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(15,42,51,0.06);
+  }
+  .investment-card .head {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 28px 36px;
+  }
+  .investment-card .head h3 {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .investment-card .head p {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--bone-warm);
+    font-style: italic;
+  }
+  .investment-card .body { padding: 32px 36px; }
+  .investment-line {
+    display: grid;
+    grid-template-columns: 1fr 110px 140px;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+  @media (max-width: 640px) {
+    .investment-line { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+  }
+  .investment-line:last-of-type { border-bottom: none; }
+  .investment-line .item {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .investment-line .item strong { color: var(--ink); }
+  .investment-line .basis {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--stone-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .investment-line .amount {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--cedar);
+    font-weight: 700;
+    text-align: right;
+  }
+  @media (max-width: 640px) { .investment-line .amount { text-align: left; } }
+  .investment-line .amount.muted { color: var(--stone-soft); font-weight: 400; }
+  .investment-total {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 22px 36px;
+    display: grid;
+    grid-template-columns: 1fr 140px;
+    gap: 24px;
+    align-items: baseline;
+  }
+  @media (max-width: 640px) { .investment-total { grid-template-columns: 1fr; } }
+  .investment-total .label {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .investment-total .total-amount {
+    font-family: var(--display);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ochre-light);
+    text-align: right;
+  }
+  @media (max-width: 640px) { .investment-total .total-amount { text-align: left; } }
+
+  .investment-frame {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 768px) { .investment-frame { grid-template-columns: 1fr; } }
+  .frame-tile {
+    background: var(--bone-warm);
+    padding: 24px;
+    border-radius: 10px;
+    border-left: 3px solid var(--moss);
+  }
+  .frame-tile .tile-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .frame-tile h4 {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .frame-tile p {
+    font-family: var(--body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* CLOSING */
+  .closing {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 96px 0;
+  }
+  .closing .closing-frame {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .closing .closing-frame { grid-template-columns: 1fr; } }
+  .closing h2 {
+    font-family: var(--display);
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--bone);
+  }
+  .closing h2 em { font-style: italic; color: var(--ochre-light); font-weight: 400; }
+  .closing p {
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--bone-warm);
+    margin-bottom: 16px;
+  }
+  .contact-card {
+    background: rgba(217, 176, 104, 0.08);
+    border: 1px solid rgba(217, 176, 104, 0.25);
+    padding: 28px;
+    border-radius: 12px;
+  }
+  .contact-card .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre-light);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .contact-card .name {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--bone);
+    margin-bottom: 4px;
+  }
+  .contact-card .creds {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--stone-soft);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .contact-card .line {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ochre-light);
+    margin-bottom: 6px;
+    word-break: break-all;
+  }
+  .closing .colophon {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(217, 176, 104, 0.2);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--stone-soft);
+    letter-spacing: 0.04em;
+  }
+  .closing .colophon strong { color: var(--bone); }
+
+  /* SECTION ID anchors get top margin offset */
+  section[id] { scroll-margin-top: 70px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <span class="brand">phronisi.app</span>
+    <nav class="nav">
+      <a href="#observation">Observation</a>
+      <a href="#transformations">Six Transformations</a>
+      <a href="#demo">Live Demo</a>
+      <a href="#session">Working Session</a>
+      <a href="#internal">Internal Team</a>
+      <a href="#investment">Investment</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container inner">
+    <div class="eyebrow">A Half-Day Showcase Proposal  ·  PHR-FMB-2026-002</div>
+    <h1>Static Documents.<br><em>Living Tools.</em></h1>
+    <p class="deck">A half-day working session for the FNFMB internal team — demonstrating how the tools and templates FMB publishes today could become intelligent, interactive, and personalized for the Nations FMB serves.</p>
+    <div class="meta">
+      <div class="meta-item">
+        <div class="label">Prepared For</div>
+        <div class="value">Natalia Valeev, CPA, CA<br><span style="font-size:14px;color:var(--stone-soft);font-style:italic;">Director, Certification  ·  FNFMB</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="label">From the Practice Of</div>
+        <div class="value">Arthur Kostaras<br><span style="font-size:14px;color:var(--stone-soft);font-style:italic;">Founder, phronisi.app</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Date</div>
+        <div class="value">Thursday, 14 May 2026<br><span style="font-size:14px;color:var(--stone-soft);font-style:italic;">Victoria, British Columbia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER STRIP -->
+<section class="builder-strip">
+  <div class="container">
+    <div class="row">
+      <span class="label">§ 00 — The Builder Behind the Showcase</span>
+      <p class="apps">phronisi.app operates four production AI platforms in active service to Canadian professionals — <strong>CanadaAccountants.app</strong> (370,000+ accountant profiles), <strong>CanadaLawyers.app</strong> (AI-powered referral-routing), <strong>CanadaInvesting.app</strong>, and <strong>CanadaBusinessExits.app</strong>. The same builder hand that codes those platforms would shape any work undertaken with FMB. The published methodology is <em>The Kostaras Method</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- I. OBSERVATION -->
+<section class="section" id="observation">
+  <div class="container">
+    <div class="section-num">§ I — The Observation</div>
+    <h2>What I see when I look at the FNFMB <em>website.</em></h2>
+    <p class="deck">The Tools and Templates section of fnfmb.com is excellent work — and it was built for a pre-AI world. Every artifact published there is a static document. The opportunity to bring them to life is significant, and immediate.</p>
+
+    <div class="inventory">
+      <table>
+        <thead>
+          <tr>
+            <th>Tool or Template</th>
+            <th>Current Form</th>
+            <th style="text-align:right;">Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="tool">Sample FAL (Financial Administration Law)</td><td class="format">Downloadable Word document</td><td class="date">2017–2020</td></tr>
+          <tr><td class="tool">Sample Strategic Plan</td><td class="format">Downloadable Word document</td><td class="date">2017</td></tr>
+          <tr><td class="tool">Sample Multi-Year Financial Plan</td><td class="format">Downloadable Excel workbook</td><td class="date">2017</td></tr>
+          <tr><td class="tool">Risk Register &amp; Management Plan Template</td><td class="format">Downloadable Word document</td><td class="date">2019</td></tr>
+          <tr><td class="tool">Annual Budget Template (consolidated)</td><td class="format">Downloadable Excel workbook</td><td class="date">2018</td></tr>
+          <tr><td class="tool">Tangible Capital Asset (TCA) Register</td><td class="format">Downloadable Excel workbook</td><td class="date">2020</td></tr>
+          <tr><td class="tool">FMS Internal Assessment Template</td><td class="format">Downloadable Excel workbook</td><td class="date">2017</td></tr>
+          <tr><td class="tool">Annual Report Template</td><td class="format">Downloadable PowerPoint</td><td class="date">2017</td></tr>
+          <tr><td class="tool">Procurement Templates pack</td><td class="format">Downloadable Word documents</td><td class="date">2020</td></tr>
+          <tr><td class="tool">Financial Performance Ratios for Grant Eligibility</td><td class="format">Static web page (text + chart)</td><td class="date">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="observation-note">
+      <p>"The standards are excellent. The intellectual property is sound. The opportunity is in the delivery — not in the content."</p>
+    </div>
+  </div>
+</section>
+
+<!-- II. SIX TRANSFORMATIONS -->
+<section class="section alt" id="transformations">
+  <div class="container">
+    <div class="section-num">§ II — Six Transformations</div>
+    <h2>Static documents that could become <em>living tools.</em></h2>
+    <p class="deck">Six specific transformations, each named against a document FMB already publishes. Each takes nothing away from the standards, the IP, or the authority. Each delivers two distinct benefits — one to the FNFMB member, one to the FMB internal team.</p>
+
+    <div class="transformations">
+      <!-- 1 -->
+      <div class="transformation">
+        <div class="head">
+          <div class="num">1</div>
+          <div class="head-text">
+            <h3>The Living FAL Drafter</h3>
+            <div class="tagline">From Sample FAL (DOCX) to interactive wizard</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="pair">
+            <div class="today">
+              <div class="label">Today</div>
+              <p>A 60-page Word document. A Nation downloads it, opens it, redrafts to fit their governance, then sends drafts back and forth with counsel and FMB.</p>
+            </div>
+            <div class="living">
+              <div class="label">Living</div>
+              <p>A web wizard. The Nation answers 25–40 contextual questions (size, governance, council composition, fiscal year, existing policies, NFR status). The tool produces a complete, FMB-aligned FAL draft, footnoted to relevant FMS standards, with redline notes for unusual elections.</p>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit member">
+              <div class="b-label">For the Member</div>
+              <p>Reduces FAL drafting from 8–12 weeks to 1–2 weeks for a typical Nation.</p>
+            </div>
+            <div class="benefit fmb">
+              <div class="b-label">For FMB</div>
+              <p>Certification team reviews more consistent, standards-aligned drafts; legal review queue shortens dramatically.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="transformation">
+        <div class="head">
+          <div class="num">2</div>
+          <div class="head-text">
+            <h3>The Living FPC Ratio Coach</h3>
+            <div class="tagline">From static page to interactive coach  ·  Working demo enclosed</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="pair">
+            <div class="today">
+              <div class="label">Today</div>
+              <p>A page on fnfmb.com describes the four ratios. The Nation calculates them offline, emails them to their auditor, and waits for interpretation.</p>
+            </div>
+            <div class="living">
+              <div class="label">Living</div>
+              <p>Inputs flow from the audit or by direct entry. The four ratios are computed, classified (green/amber/red), commented on individually, and synthesized into an overall picture. Certification readiness is framed honestly. Capacity Development team sees the same view across their cohort.</p>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit member">
+              <div class="b-label">For the Member</div>
+              <p>A Nation understands its position and pathway in minutes, not weeks. Council briefings become trivially simple.</p>
+            </div>
+            <div class="benefit fmb">
+              <div class="b-label">For FMB</div>
+              <p>Certification team has a real-time picture of cohort readiness. DMPPP-eligible Nations surface earlier.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="transformation">
+        <div class="head">
+          <div class="num">3</div>
+          <div class="head-text">
+            <h3>The Living FMS Self-Check</h3>
+            <div class="tagline">From XLSX template (2017) to walkthrough</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="pair">
+            <div class="today">
+              <div class="label">Today</div>
+              <p>An Excel workbook with the fourteen FMS Standards. The Nation works through it cell by cell, often without confidence on what evidence each row requires.</p>
+            </div>
+            <div class="living">
+              <div class="label">Living</div>
+              <p>A web walkthrough of all fourteen standards. Each row asks 2–3 plain-language questions. Evidence requirements surface inline. Remediation steps personalized. Output: a one-page Council readiness summary, a detailed evidence pack for FMB, and a remediation plan with owners and dates.</p>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit member">
+              <div class="b-label">For the Member</div>
+              <p>A Nation self-assesses in days rather than months. Confidence to engage FMB is materially higher.</p>
+            </div>
+            <div class="benefit fmb">
+              <div class="b-label">For FMB</div>
+              <p>Capacity Development Managers receive submissions in a consistent, standards-mapped shape. Site visits focus on remediation, not orientation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="transformation">
+        <div class="head">
+          <div class="num">4</div>
+          <div class="head-text">
+            <h3>The Living Risk Register</h3>
+            <div class="tagline">From DOCX template (2019) to AI-augmented register</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="pair">
+            <div class="today">
+              <div class="label">Today</div>
+              <p>A Word document. The Nation enumerates risks, ranks them, and writes mitigations — typically once a year, often perfunctorily.</p>
+            </div>
+            <div class="living">
+              <div class="label">Living</div>
+              <p>An AI-augmented register. The Nation answers contextual questions. The tool proposes a Nation-specific risk inventory from a library of typical First Nation risks. Mitigations suggested per risk and editable. Quarterly check-ins prompt review of only the risks that changed.</p>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit member">
+              <div class="b-label">For the Member</div>
+              <p>Risk practice becomes continuous rather than annual. Council oversight improves.</p>
+            </div>
+            <div class="benefit fmb">
+              <div class="b-label">For FMB</div>
+              <p>Standards team gains anonymized aggregate signal on which risk classes are systemically rising or falling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="transformation">
+        <div class="head">
+          <div class="num">5</div>
+          <div class="head-text">
+            <h3>The Living Annual Report Builder</h3>
+            <div class="tagline">From PPTX template to AI-augmented draft</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="pair">
+            <div class="today">
+              <div class="label">Today</div>
+              <p>A PowerPoint template and a Word guidance document. A Nation manually drafts the annual report each year, typically without the time to do it well.</p>
+            </div>
+            <div class="living">
+              <div class="label">Living</div>
+              <p>The Nation uploads the audited financials, prior-year report, and 3–5 council direction notes. The tool produces a complete draft annual report — financial commentary, year-in-review narrative, FPC-aligned performance section, acknowledgements. The finance officer edits a near-finished document.</p>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit member">
+              <div class="b-label">For the Member</div>
+              <p>Reduces annual report production from 60+ hours to 8–10. Quality and member engagement both rise.</p>
+            </div>
+            <div class="benefit fmb">
+              <div class="b-label">For FMB</div>
+              <p>Aggregate aggregation across the membership becomes feasible — a national picture drawn from artefacts FMB already touches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="transformation">
+        <div class="head">
+          <div class="num">6</div>
+          <div class="head-text">
+            <h3>The Living TCA Companion</h3>
+            <div class="tagline">From XLS template (2020) to asset intelligence</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="pair">
+            <div class="today">
+              <div class="label">Today</div>
+              <p>An Excel workbook with asset rows, classes, amortization, and a life-cycle plan. Manual updates each year. Reconciliation to the audit is its own project.</p>
+            </div>
+            <div class="living">
+              <div class="label">Living</div>
+              <p>An asset register with intelligence. New assets entered with AI-prompted classification. Life-cycle planning automated against asset class. Maintenance and replacement scheduling visible on a roadmap. Direct reconciliation to the audited financials.</p>
+            </div>
+          </div>
+          <div class="benefits">
+            <div class="benefit member">
+              <div class="b-label">For the Member</div>
+              <p>Capital planning becomes proactive, not reactive. Asset Maintenance Ratio improves naturally over time.</p>
+            </div>
+            <div class="benefit fmb">
+              <div class="b-label">For FMB</div>
+              <p>DMPPP early-warning signals can be triangulated against asset deterioration trends across the membership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO CALLOUT -->
+<section class="section" id="demo">
+  <div class="container">
+    <div class="section-num">§ III — Working Demonstrations</div>
+    <h2>Three transformations, built and runnable. <em>Today.</em></h2>
+    <p class="deck">Three working, interactive demonstrations accompany this showcase. Each is a single HTML file — no installation, no connection. Open any one on a laptop, click a button, and feel what "living" means. The other three transformations will be built live with the FNFMB team during the working session itself.</p>
+
+    <div class="demo-callout">
+      <div class="eyebrow">Interactive Demonstrations  ·  Open in any browser</div>
+      <h3>Three demos. <em>One visual language.</em></h3>
+      <p>Each demonstration is rule-based and illustrative — FMB-aligned but not FMB-authoritative. In production, each would be a reasoning model with access to the Nation's audited financials, prior-year context, anonymized peer-Nation data, and FMB working papers — generating output dynamically rather than from a small built-in clause library.</p>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="demo-num">Transformation #1</div>
+          <div class="demo-title">Living <em>FAL Drafter</em></div>
+          <div class="demo-desc">Multi-step wizard. Four short input steps (Nation Basics, Governance, Financial Profile, Authorities), then a generated FAL preview with sections populated, definitions filled, thresholds set, and a coverage map against all fourteen FMS Standards. Three sample Nations preloaded.</div>
+          <a href="FNFMB_Living_FAL_Drafter_Demo.html" class="demo-link">Open FAL Drafter</a>
+        </div>
+        <div class="demo-card">
+          <div class="demo-num">Transformation #2</div>
+          <div class="demo-title">Living <em>FPC Coach</em></div>
+          <div class="demo-desc">The four FPC ratios computed, classified green/amber/red, commented individually, and synthesized into an overall picture. Certification readiness framed honestly. Three sample Nations preloaded — Strong, Marginal, Stressed — or enter your own numbers.</div>
+          <a href="FNFMB_Living_FPC_Coach_Demo.html" class="demo-link">Open FPC Coach</a>
+        </div>
+        <div class="demo-card">
+          <div class="demo-num">Transformation #6</div>
+          <div class="demo-title">Living <em>TCA Companion</em></div>
+          <div class="demo-desc">Eight sample assets pre-loaded. Register view with health flags. Life-cycle replacement timeline as inline SVG. Audit reconciliation. AI-classification moment in the Add Asset tab — describe an asset in plain language, watch it become a structured record.</div>
+          <a href="FNFMB_Living_TCA_Companion_Demo.html" class="demo-link">Open TCA Companion</a>
+        </div>
+      </div>
+
+      <div class="live-build-note">
+        <div class="lb-label">The Other Three  ·  Built Live During the Working Session</div>
+        <p>The <strong>Living FMS Self-Check</strong>, the <strong>Living Risk Register</strong>, and the <strong>Living Annual Report Builder</strong> are not pre-built. They will be assembled live with the FNFMB team during the session itself — using FMB's own published Excel and Word templates as the starting material. The live-build moment is the most powerful part of the session, because it proves the capability is a verb, not a slide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IV. WORKING SESSION -->
+<section class="section alt" id="session">
+  <div class="container">
+    <div class="section-num">§ IV — The Half-Day Working Session</div>
+    <h2>Four programmed hours. <em>Laptops on the table.</em></h2>
+    <p class="deck">A working session, not a lecture. The format is collaborative; the screen is on; the FMB tools are on it. The session moves between demonstration, discussion, and live transformation.</p>
+
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="agenda-time">0:00 – 0:20</div>
+        <div class="agenda-title">Welcome</div>
+        <div class="agenda-desc">Territorial acknowledgement. Round-the-table introductions. The agenda. One question to set the room: which of the FMB tools, today, demands the most time from the people in this room? The answer shapes the second hour.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">0:20 – 1:10</div>
+        <div class="agenda-title"><span class="roman">I.</span> The Audit</div>
+        <div class="agenda-desc">Guided walkthrough of the Tools and Templates section as it exists today. Category by category — Governance, Information Management, Finance, HR, Local Revenues. For each, we name the static state, the user's experience, and the question: what would this become if it could think?</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">1:10 – 2:25</div>
+        <div class="agenda-title"><span class="roman">II.</span> Six Transformations</div>
+        <div class="agenda-desc">Live, on-screen demonstration of each of the six transformations. Three of them deeper than the others, selected by the team during the morning. The Living FPC Coach is the anchor — the form is the same for the other five.</div>
+      </div>
+      <div class="agenda-row break">
+        <div class="agenda-time">2:25 – 2:55</div>
+        <div class="agenda-title">Break</div>
+        <div class="agenda-desc">Coffee. Informal conversation. The screen is left on.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">2:55 – 3:55</div>
+        <div class="agenda-title"><span class="roman">III.</span> The Internal Team</div>
+        <div class="agenda-desc">Three demonstrations focused not on member-facing tools but on what AI could do for FMB staff directly. Certification evidence pre-screen. Capacity Development cohort dashboard. Standards cross-jurisdiction research.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">3:55 – 4:25</div>
+        <div class="agenda-title"><span class="roman">IV.</span> The Roadmap Conversation</div>
+        <div class="agenda-desc">The honest question: if any of this should be built, how? Stage-and-prove approach. First three transformations in 90 days. Cost and timeline framework. Data sovereignty, hosting, and the question of who owns what.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">4:25 – 4:55</div>
+        <div class="agenda-title"><span class="roman">V.</span> Q&amp;A</div>
+        <div class="agenda-desc">Open questions. Held back deliberately so the session does not have to budget for them inside the working time.</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">4:55 – 5:00</div>
+        <div class="agenda-title">Close</div>
+        <div class="agenda-desc">Names what the next step would be — without asking for it. The proposal that follows is shaped by what this session reveals, not the other way around.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V. INTERNAL TEAM -->
+<section class="section dark" id="internal">
+  <div class="container">
+    <div class="section-num">§ V — The Internal Team</div>
+    <h2>What AI could do for the FMB team <em>directly.</em></h2>
+    <p class="deck">Member-facing tools are the lead example. They are not the whole story. The afternoon module focuses on what the FMB internal team could gain — directly, immediately, and without changing any FMB-facing artefact.</p>
+
+    <div class="internal-grid">
+      <div class="internal-card">
+        <div class="person">For Natalia's Team  ·  Certification</div>
+        <h3>Evidence Pre-Screen</h3>
+        <p class="description">Before the analyst opens a submission, AI has mapped each document to the relevant standard, flagged gaps, identified inconsistencies, and produced a one-page summary. The analyst's first 20 minutes are now spent on judgement, not on inventory.</p>
+        <div class="impacts">
+          <div class="impact"><strong>Time saved:</strong> 1.5–3 hours per submission</div>
+          <div class="impact"><strong>Quality effect:</strong> Attention concentrates on hard cases</div>
+          <div class="impact"><strong>Standards effect:</strong> Patterns surface in aggregate</div>
+        </div>
+      </div>
+
+      <div class="internal-card">
+        <div class="person">For Amy's Team  ·  Capacity Development</div>
+        <h3>Cohort Dashboard</h3>
+        <p class="description">Every Nation in a Manager's portfolio on one screen: latest ratios, certification status, latest engagement, last contact, flagged concerns, upcoming milestones. The Monday-morning view shows which calls matter most this week.</p>
+        <div class="impacts">
+          <div class="impact"><strong>Time saved:</strong> 4–6 hours per Manager per week</div>
+          <div class="impact"><strong>Reach effect:</strong> Same team supports more Nations meaningfully</div>
+          <div class="impact"><strong>Equity effect:</strong> Quieter Nations surface in the dashboard</div>
+        </div>
+      </div>
+
+      <div class="internal-card">
+        <div class="person">For Lee's Team  ·  Standards</div>
+        <h3>Cross-Jurisdiction Research</h3>
+        <p class="description">When the team considers a refinement to FMS, FPC, or FAL, an AI research companion compiles parallel literature in minutes: PSAB pronouncements, Indigenous fiscal frameworks (NZ, Australia, US tribal nations), peer-reviewed accounting research, and FMB historical submissions.</p>
+        <div class="impacts">
+          <div class="impact"><strong>Time saved:</strong> 40–80 hours per major review</div>
+          <div class="impact"><strong>Quality effect:</strong> More comparative jurisdictions considered</div>
+          <div class="impact"><strong>Sovereignty:</strong> Closed-tenant cloud, no FMB data leaves perimeter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VI. INVESTMENT -->
+<section class="section" id="investment">
+  <div class="container">
+    <div class="section-num">§ VI — Investment &amp; Logistics</div>
+    <h2>Plain numbers. <em>Designed for an easy yes.</em></h2>
+    <p class="deck">The numbers are set deliberately to make this a low-friction first conversation. The intent is to earn the larger engagement by demonstrating concrete value in a focused session — not to negotiate a higher fee on a colder relationship.</p>
+
+    <div class="investment-card">
+      <div class="head">
+        <h3>The Fee</h3>
+        <p>All amounts CAD. GST applies as required. Expenses reimbursed at cost with receipts.</p>
+      </div>
+      <div class="body">
+        <div class="investment-line">
+          <div class="item"><strong>Presentation fee</strong>  ·  half-day on-site working session at Park Royal</div>
+          <div class="basis">Fixed</div>
+          <div class="amount">$7,500</div>
+        </div>
+        <div class="investment-line">
+          <div class="item">Pre-session discovery call (60 minutes)</div>
+          <div class="basis">Included</div>
+          <div class="amount muted">—</div>
+        </div>
+        <div class="investment-line">
+          <div class="item">Post-session follow-up call (30 minutes)</div>
+          <div class="basis">Included</div>
+          <div class="amount muted">—</div>
+        </div>
+        <div class="investment-line">
+          <div class="item">Reimbursable  ·  Helijet round-trip Victoria ↔ Vancouver</div>
+          <div class="basis">At cost</div>
+          <div class="amount">~$250</div>
+        </div>
+        <div class="investment-line">
+          <div class="item">Reimbursable  ·  one night hotel near Park Royal</div>
+          <div class="basis">At cost</div>
+          <div class="amount">~$220</div>
+        </div>
+        <div class="investment-line">
+          <div class="item">Reimbursable  ·  meals and ground transport</div>
+          <div class="basis">At cost</div>
+          <div class="amount">~$180</div>
+        </div>
+      </div>
+      <div class="investment-total">
+        <div class="label">Total commitment (estimate)</div>
+        <div class="total-amount">~$8,150</div>
+      </div>
+    </div>
+
+    <div class="investment-frame">
+      <div class="frame-tile">
+        <div class="tile-label">Why This Fee</div>
+        <h4>Below market by design</h4>
+        <p>Standard commercial half-day pricing for this kind of customized session lands $14,000–$18,000. The reduced rate is intentional — an opening posture, not a market signal.</p>
+      </div>
+      <div class="frame-tile">
+        <div class="tile-label">Approval Logistics</div>
+        <h4>Below director threshold</h4>
+        <p>Total commitment sits comfortably under typical director-level approval limits. Designed to be an easy yes if the substance lands well.</p>
+      </div>
+      <div class="frame-tile">
+        <div class="tile-label">Cancellation</div>
+        <h4>Standard terms</h4>
+        <p>More than 21 days: no fee. 21–7 days: 25% held against design completed. Inside 7 days: fee held but session rescheduled at the team's convenience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="container">
+    <div class="section-num">§ VII — Next Step</div>
+    <div class="closing-frame">
+      <div>
+        <h2>A thirty-minute call. <em>That is the entire ask.</em></h2>
+        <p>Next step is a 30-minute call to confirm dates and select the three or four FMB tools the team would most like to see transformed live during the session. Time blocks open in the last two weeks of June and through July.</p>
+        <p>If the working session lands well, the conversations that follow naturally include which transformation to build first, on what timeline, with what governance. None of those are necessary to schedule the working session itself.</p>
+        <p>If it does not land well, the fee covers the work done; the team has had a half-day's exposure to what is possible; the demonstration remains available. phronisi.app moves on with no continued ask of FMB.</p>
+      </div>
+      <div class="contact-card">
+        <div class="label">For continuation of this conversation</div>
+        <div class="name">Arthur Kostaras</div>
+        <div class="creds">CPA · CMA · CF · REV · CAFM Candidate</div>
+        <div class="line">arthur@phronisi.app</div>
+        <div class="line">+1 647 956 7290</div>
+        <div class="line" style="margin-top:14px;color:var(--stone-soft);">Founder, phronisi.app<br><em>Practical wisdom, applied.</em></div>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <strong>Proposal PHR-FMB-2026-002</strong>  ·  Static Documents, Living Tools  ·  Half-Day Showcase for the FNFMB Internal Team  ·  Thursday, 14 May 2026  ·  Victoria, British Columbia
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
