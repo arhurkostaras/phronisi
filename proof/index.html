@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How We Know Our Claims Are True · Phronisi.</title>
+<meta name="description" content="A case study in engineered honesty: one week, four production platforms, every public claim audited against the code and the database, and the gates that now make dishonest copy fail the build." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B0E12;
+  --ink-2: #14181F;
+  --ink-3: #1C2128;
+  --line: rgba(212, 188, 138, 0.14);
+  --line-strong: rgba(212, 188, 138, 0.30);
+  --cream: #F1EADC;
+  --cream-2: #E6DDC7;
+  --gold: #C9A86A;
+  --gold-bright: #E0BE7E;
+  --gold-deep: #8A6F3F;
+  --bone: #D9D0BA;
+  --mute: #7C8492;
+  --mute-2: #A4ACBA;
+  --green: #6FCF97;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--gold-bright); }
+.container { max-width: 980px; margin: 0 auto; padding: 0 32px; }
+.nav {
+  padding: 22px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(11, 14, 18, 0.78);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav .mark {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px;
+  font-variation-settings: "opsz" 48, "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.01em; color: var(--cream);
+}
+.nav .mark .dot { color: var(--gold); }
+.nav .crumb {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--mute-2);
+}
+.hero {
+  padding: 96px 0 56px;
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(ellipse at 70% 30%, rgba(201, 168, 106, 0.08), transparent 55%);
+}
+.kicker {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase; padding: 6px 13px;
+  margin-bottom: 28px; color: var(--mute-2); border: 1px dashed var(--line-strong);
+  font-weight: 500;
+}
+h1.page-title {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 64px); letter-spacing: -0.025em; line-height: 1.05;
+  margin-bottom: 24px; font-variation-settings: "opsz" 96, "SOFT" 30, "WONK" 1;
+}
+h1.page-title em { color: var(--gold-bright); font-style: italic; }
+.lede {
+  font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.45;
+  color: var(--bone); letter-spacing: -0.005em; max-width: 760px;
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+}
+.statrow {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin: 56px 0 0;
+}
+.stat { background: var(--ink-2); padding: 26px 22px; }
+.stat b {
+  display: block; font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: 34px; letter-spacing: -0.02em; color: var(--gold-bright); margin-bottom: 6px;
+}
+.stat span {
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute-2); line-height: 1.5;
+}
+section.block { padding: 64px 0; border-bottom: 1px solid var(--line); }
+.idx {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500;
+}
+h2 {
+  font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px;
+  letter-spacing: -0.015em; line-height: 1.15; margin-bottom: 20px;
+  font-variation-settings: "opsz" 48, "SOFT" 30;
+}
+h2 em { color: var(--gold-bright); font-style: italic; }
+.block p { margin-bottom: 20px; color: var(--bone); max-width: 780px; }
+.block strong { color: var(--cream); }
+ul.plain { list-style: none; max-width: 780px; }
+ul.plain li {
+  padding: 18px 0 18px 34px; border-bottom: 1px solid var(--line);
+  position: relative; color: var(--bone);
+}
+ul.plain li::before {
+  content: "—"; position: absolute; left: 0; color: var(--gold); font-weight: 600;
+}
+ul.plain li b { color: var(--cream); font-weight: 600; }
+.gatecard {
+  margin: 8px 0; padding: 26px 28px; background: var(--ink-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--gold);
+}
+.gatecard h3 {
+  font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold-bright); margin-bottom: 8px; font-weight: 500;
+}
+.gatecard p { font-size: 15px; margin-bottom: 0; color: var(--bone); }
+.quote {
+  margin: 36px 0; padding: 28px 32px; background: linear-gradient(135deg, var(--ink-2), var(--ink-3));
+  border: 1px solid var(--line); border-left: 3px solid var(--gold);
+  font-family: 'Fraunces', serif; font-size: 21px; line-height: 1.45; color: var(--cream-2);
+  font-variation-settings: "opsz" 36, "SOFT" 30; max-width: 780px;
+}
+.quote .attr {
+  display: block; margin-top: 14px; font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute);
+}
+.cta-band {
+  margin-top: 56px; padding: 40px 36px;
+  background: linear-gradient(135deg, var(--ink-2), var(--ink-3));
+  border: 1px solid var(--line); border-left: 3px solid var(--gold);
+}
+.cta-band .eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 500;
+}
+.cta-band h3 {
+  font-family: 'Fraunces', serif; font-size: 30px; line-height: 1.18;
+  letter-spacing: -0.015em; margin-bottom: 12px; font-weight: 400;
+  font-variation-settings: "opsz" 48, "SOFT" 30;
+}
+.cta-band p { font-size: 15px; color: var(--bone); margin-bottom: 22px; max-width: 700px; }
+.btn {
+  display: inline-block; padding: 14px 28px; background: var(--gold); color: var(--ink);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.20em;
+  text-transform: uppercase; font-weight: 500; transition: background 0.25s;
+}
+.btn:hover { background: var(--gold-bright); color: var(--ink); }
+.provenance {
+  padding: 40px 0 8px; font-size: 13.5px; color: var(--mute); max-width: 780px;
+}
+.footer {
+  border-top: 1px solid var(--line); padding: 40px 48px; display: flex;
+  justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--mute); background: var(--ink);
+}
+@media (max-width: 800px) {
+  .statrow { grid-template-columns: repeat(2, 1fr); }
+  .nav { padding: 18px 24px; }
+  .footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="mark">Phronisi<span class="dot">.</span></a>
+  <span class="crumb">Proof · The Truth Sweep</span>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="kicker">Case study · July 2026 · From our own operations record</div>
+    <h1 class="page-title">How we know our<br>claims are <em>true.</em></h1>
+    <p class="lede">
+      In the first week of July 2026 we audited every public claim across our own network of
+      Canadian professional platforms against the code and the database behind it &mdash; then built
+      the machinery that makes a dishonest sentence fail the build. This page is the record.
+    </p>
+    <div class="statrow">
+      <div class="stat"><b>49</b><span>Public claims adjudicated, one by one</span></div>
+      <div class="stat"><b>3</b><span>Published counts re-based to database truth</span></div>
+      <div class="stat"><b>4</b><span>CI gate families now enforcing honesty</span></div>
+      <div class="stat"><b>1</b><span>Revenue calculator retired as an untrue claim</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="container">
+    <div class="idx">/ 01 &nbsp; The problem</div>
+    <h2>Marketing copy drifts from code truth. <em>Always.</em></h2>
+    <p>
+      Nobody sets out to lie. A pricing page promises a perk before the feature ships. A directory
+      headline quotes the size of a raw database table instead of the vetted subset actually served.
+      A claim survives one copy review by moving to a different page, or by dropping two words that
+      the reviewer searched for. Copy and code update through different channels, so they diverge
+      &mdash; on every software team, everywhere.
+    </p>
+    <p>
+      We run four production platforms for Canadian professionals &mdash; accountants, lawyers,
+      financial advisors, and business sellers. In July 2026 we stopped treating that drift as a
+      copywriting problem and started treating it as an engineering problem.
+    </p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <div class="idx">/ 02 &nbsp; What the sweep found &mdash; and what we did about it</div>
+    <h2>Every claim traced to its source of truth.</h2>
+    <ul class="plain">
+      <li><b>49 findings adjudicated individually.</b> Every public claim on the estate was reviewed
+        against the code and the production database. Each one was either evidenced, corrected, or
+        removed &mdash; with the ruling recorded.</li>
+      <li><b>Published counts re-based to the vetted data, not the raw table.</b> One platform
+        advertised "225,000+" professionals; the honest, quality-filtered number was 143,391, so the
+        page now says 140,000+. Another advertised "56,000+"; the raw count included 36,103
+        out-of-scope licensees, so the page now says 18,000+. The third platform's "100,000+"
+        survived the check at 100,019 &mdash; a 19-row margin we logged rather than ignored.</li>
+      <li><b>A revenue calculator was retired outright.</b> A calculator on a pricing page is a claim
+        in math's clothing, and this one projected returns from a capacity that had never once been
+        reached in production. It failed the standard on every prong, so it was removed &mdash; along
+        with 131 links that pointed to it &mdash; and the page generator was patched so a future
+        rebuild cannot re-emit it.</li>
+      <li><b>"Verified" now means a human verified it.</b> Automatic status stamps were renamed to
+        what they actually are &mdash; a registry check &mdash; and the word "verified" is reserved
+        exclusively for the manual review a person performs.</li>
+      <li><b>Promise and behavior ship in the same deploy.</b> Member-facing copy promised a paid
+        perk that the code was delivering to everyone. The copy fix and the entitlement gate landed
+        in one deploy, so the promise and the behavior cannot diverge in either direction.</li>
+      <li><b>Fabricated social proof deleted.</b> Placeholder testimonials and a script that
+        simulated "live" activity numbers were removed entirely. No replacement until real ones exist.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <div class="idx">/ 03 &nbsp; The machinery</div>
+    <h2>Honesty that survives the next deploy is <em>engineered,</em> not resolved.</h2>
+    <p>
+      A copy review fixes today's pages. The gates below run in continuous integration on every
+      push, so the corrected claims cannot quietly return:
+    </p>
+    <div class="gatecard">
+      <h3>Copy-ban gate</h3>
+      <p>Every phrase retired in the adjudication &mdash; unsupported guarantees, unenforced capacity
+      caps, feature claims with no feature behind them &mdash; is a banned pattern. A pull request that
+      reintroduces one fails CI with the ruling named in the failure message.</p>
+    </div>
+    <div class="gatecard">
+      <h3>Count-claims test</h3>
+      <p>Backend email templates are tested against the stale raw-count family. The test names the
+      honest source number in its failure message &mdash; and it caught a second stale count before
+      merge during the sweep itself.</p>
+    </div>
+    <div class="gatecard">
+      <h3>Design-integrity and accessibility gates</h3>
+      <p>Raw color values outside the design-token file fail the build, and six key pages must hold a
+      Lighthouse accessibility score of 90 or better on every push.</p>
+    </div>
+    <div class="gatecard">
+      <h3>Deploy-base guard</h3>
+      <p>Every deploy is refused unless the code being shipped contains the current production
+      history &mdash; born from a real incident, described below.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <div class="idx">/ 04 &nbsp; The incident we disclose</div>
+    <h2>The guard exists because we shipped a mistake.</h2>
+    <p>
+      During the same period, two deploys went out from stale local code and silently reverted
+      already-shipped work on two platforms for roughly a day. We caught it through our own review
+      discipline, disclosed it in the operations record, remediated it the same session, and encoded
+      the fix: a pre-deploy guard that refuses any deploy whose code does not contain the production
+      history, printing the exact divergence when it refuses. It has run on every deploy since.
+    </p>
+    <p>
+      That is the pattern behind everything on this page. The operating rule is written down: when
+      the same class of mistake is corrected twice, it is not corrected a third time by hand &mdash;
+      it is converted into a mechanism the system enforces, recorded in a ledger, and never silently
+      deleted. Retired rules stay in the ledger, marked retired, with the reason.
+    </p>
+    <div class="quote">
+      "Prefer impossible over caught over complained-about. A constraint that makes the mistake
+      unwritable beats a test that catches it, which beats an assertion that grumbles after the fact."
+      <span class="attr">Backpressure protocol · internal operations standard</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="border-bottom: none;">
+  <div class="container">
+    <div class="idx">/ 05 &nbsp; Why this matters to you</div>
+    <h2>This is the discipline we install.</h2>
+    <p>
+      AI makes it cheap to generate claims, content, and code &mdash; which makes it cheap to
+      generate <strong>wrong</strong> claims, content, and code. The competitive question is no longer
+      whether your organisation can produce output; it is whether your organisation can prove its
+      output is true. Registry-checked data, human-gated review of generated content, disclosure of
+      how rankings weight paid tiers, consent-first outreach design: these are the same mechanisms
+      documented above, and they are what a Phronisi engagement builds inside your operation.
+    </p>
+    <p>
+      We can show you this system live &mdash; the gates, the ledger, the failure messages &mdash;
+      because we run it on our own platforms first.
+    </p>
+    <div class="cta-band">
+      <div class="eyebrow">Next step</div>
+      <h3>See the system, then decide.</h3>
+      <p>A 60-minute Diagnostic Call: your context, a live look at the machinery on our own estate,
+      and a clear recommendation on scoping and sequencing &mdash; whether or not it leads to an
+      engagement.</p>
+      <a class="btn" href="mailto:arthur@phronisi.app?subject=Diagnostic%20Call%20request%20%E2%80%94%20Phronisi&body=Hello%20Arthur%2C%0A%0AI%27d%20like%20to%20book%20a%2060-minute%20Diagnostic%20Call.%0A%0AOrganisation%3A%0ARole%3A%0AContext%20%2F%20question%20I%27m%20evaluating%3A%0APreferred%20window%20(next%202%20weeks)%3A%0A%0AThank%20you%2C%0A">Request a Diagnostic &rarr;</a>
+    </div>
+    <p class="provenance">
+      Provenance: everything on this page is drawn from our internal operations record and
+      backpressure ledger, July 2026. Dates are real, numbers are quoted from the record, and the
+      incident in section 04 is disclosed, not curated. No client engagements or client data are
+      referenced. The platforms are CanadaAccountants.app, CanadaLawyers.app, CanadaInvesting.app,
+      and Canada Business Exits.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>Phronisi. &middot; Practical wisdom, installed.</span>
+  <span><a href="/">phronisi.app</a> &middot; <a href="/e23/">E-23 Guide</a></span>
+</footer>
+
+</body>
+</html>
