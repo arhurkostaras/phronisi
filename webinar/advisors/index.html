@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI for CPAs — Free 45-Minute Session · Phronisi.</title>
-<meta name="description" content="A free 45-minute session for Canadian CPAs: which tasks AI handles well today, which ones it fails quietly, and how to document AI-assisted work so it holds up. No product pitch." />
+<title>AI for Investment Professionals — Free 45-Minute Session · Phronisi.</title>
+<meta name="description" content="A free 45-minute session for Canadian investment professionals: which tasks AI handles well today, which ones fail quietly — invented numbers above all — and how to document AI-assisted work so it survives compliance review. No product pitch." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -137,31 +137,31 @@ button:disabled { background: var(--mute); cursor: wait; }
 
 <nav class="nav">
   <a href="/" class="mark">Phronisi<span class="dot">.</span></a>
-  <span class="crumb">Free Session · AI for CPAs</span>
+  <span class="crumb">Free Session · AI for Investment Professionals</span>
 </nav>
 
 <header class="hero">
   <div class="container">
-    <div class="kicker">Free · 45 minutes · Online · For Canadian CPAs</div>
-    <h1>AI for CPAs, <em>without the hype.</em></h1>
+    <div class="kicker">Free · 45 minutes · Online · For Canadian Investment Professionals</div>
+    <h1>AI for investment professionals, <em>without the hype.</em></h1>
     <p class="lede">
-      Which tasks AI handles well today, which ones it fails quietly, and how to document
-      AI-assisted work so it holds up under review.
+      Which tasks AI handles well today, which ones fail quietly &mdash; invented numbers
+      above all &mdash; and how to document AI-assisted work so it survives compliance review.
     </p>
     <div class="facts">
-      <span>Tuesday, August 25 &middot; 2:00 PM Eastern</span>
+      <span>Date announced to registrants first</span>
       <span>No product pitch</span>
-      <span>Hosted by Arthur Kostaras, CPA, CMA</span>
+      <span>Hosted by Arthur Kostaras, CPA, CMA &middot; Founder, CanadaInvesting</span>
     </div>
   </div>
 </header>
 
 <div class="container body-block">
   <p>
-    I run CanadaAccountants, and I spend most of my working week using AI inside real finance
-    workflows &mdash; working papers, client correspondence, documentation that has to survive
-    review. This session is the practical version: what actually works in a Canadian practice,
-    demonstrated, with the failure modes shown rather than skipped.
+    I run CanadaInvesting, and I spend most of my working week using AI inside real professional
+    workflows &mdash; client correspondence, meeting documentation, records that have to survive
+    compliance review. This session is the practical version: what actually works in a Canadian
+    practice, demonstrated, with the failure modes shown rather than skipped.
   </p>
   <p>
     One link at the end if you want to go deeper. Nothing else.
@@ -171,7 +171,7 @@ button:disabled { background: var(--mute); cursor: wait; }
 <div class="container">
   <div class="formcard">
     <h2>Register</h2>
-    <p class="sub">Tuesday, August 25 at 2:00 PM Eastern. You'll receive the joining link by email before the session.</p>
+    <p class="sub">You'll receive the date and joining link by email. Registrants hear first.</p>
     <form id="regForm" novalidate>
       <label for="f-name">Name</label>
       <input type="text" id="f-name" name="name" maxlength="200" required autocomplete="name">
@@ -201,7 +201,7 @@ button:disabled { background: var(--mute); cursor: wait; }
 
 <div class="container" style="padding-bottom: 56px;">
   <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute);">
-    Also running &mdash; <a href="/webinar/lawyers/">AI for Lawyers</a> &middot; <a href="/webinar/advisors/">AI for Investment Professionals</a>
+    Also running &mdash; <a href="/webinar/">AI for CPAs (Aug 25)</a> &middot; <a href="/webinar/lawyers/">AI for Lawyers</a>
   </p>
 </div>
 
@@ -241,6 +241,7 @@ button:disabled { background: var(--mute); cursor: wait; }
         email: email,
         organisation: document.getElementById('f-org').value.trim(),
         marketingConsent: document.getElementById('f-consent').checked === true,
+        webinar: 'ai-for-advisors-2026',
         website: document.getElementById('f-web').value
       })
     }).then(function (res) {
