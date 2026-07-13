@@ -107,6 +107,15 @@ button {
 }
 button:hover { background: var(--gold-bright); }
 button:disabled { background: var(--mute); cursor: wait; }
+.consent-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 22px; }
+.consent-row input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 2px; flex: 0 0 auto;
+  accent-color: var(--gold); cursor: pointer;
+}
+.consent-label {
+  margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+  letter-spacing: 0; text-transform: none; color: var(--bone); cursor: pointer; line-height: 1.5;
+}
 .msg { margin-top: 20px; padding: 16px 18px; font-size: 15px; display: none; border-radius: 4px; }
 .msg.ok { display: block; background: rgba(111, 207, 151, 0.10); border: 1px solid rgba(111, 207, 151, 0.35); color: var(--green); }
 .msg.err { display: block; background: rgba(197, 121, 84, 0.10); border: 1px solid rgba(197, 121, 84, 0.4); color: var(--rust); }
@@ -174,11 +183,17 @@ button:disabled { background: var(--mute); cursor: wait; }
         <label for="f-web">Website</label>
         <input type="text" id="f-web" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <div class="consent-row">
+        <input type="checkbox" id="f-consent" name="marketingConsent">
+        <label for="f-consent" class="consent-label">Also send me The Quarterly and future Phronisi sessions.</label>
+      </div>
       <button type="submit" id="submitBtn">Register &rarr;</button>
       <div class="msg" id="formMsg" role="status"></div>
       <p class="privacy">
-        Your details are used to send you this session's date, joining link, and materials &mdash;
-        nothing else, and they are never shared. Questions: <a href="mailto:arthur@phronisi.app">arthur@phronisi.app</a>.
+        Your details are used to send you this session's joining link and materials &mdash; and,
+        only if you tick the box above, The Quarterly and future session invitations. They are
+        never sold or shared for marketing. <a href="/privacy/">Privacy note</a> &middot;
+        Questions: <a href="mailto:arthur@phronisi.app">arthur@phronisi.app</a>.
       </p>
     </form>
   </div>
@@ -219,6 +234,7 @@ button:disabled { background: var(--mute); cursor: wait; }
         name: name,
         email: email,
         organisation: document.getElementById('f-org').value.trim(),
+        marketingConsent: document.getElementById('f-consent').checked === true,
         website: document.getElementById('f-web').value
       })
     }).then(function (res) {
