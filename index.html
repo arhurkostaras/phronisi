@@ -2806,14 +2806,14 @@ h1.hero-title {
 
     <div class="cta-grid">
 
-      <a class="cta-card" href="mailto:arthur@phronisi.app?subject=Diagnostic%20Call%20request%20%E2%80%94%20Phronisi&body=Hello%20Arthur%2C%0A%0AI%27d%20like%20to%20book%20a%2060-minute%20Diagnostic%20Call.%0A%0AOrganisation%3A%0ARole%3A%0AContext%20%2F%20question%20I%27m%20evaluating%3A%0APreferred%20window%20(next%202%20weeks)%3A%0A%0AThank%20you%2C%0A">
+      <a class="cta-card" href="#inquire">
         <div class="cta-eyebrow">CTA 01 · Paid</div>
         <h3>Book a <em>60-minute</em> Diagnostic Call.</h3>
         <p>For senior leaders evaluating an AI engagement. Scoping, sequencing, and a clear recommendation. Fixed fee: $1,500 CAD, credited in full against any engagement booked within 90 days.</p>
         <div class="cta-button">Request a Diagnostic <span class="arr">→</span></div>
       </a>
 
-      <a class="cta-card" href="mailto:arthur@phronisi.app?subject=Briefing%20Inquiry%20%E2%80%94%20Phronisi&body=Hello%20Arthur%2C%0A%0AI%27d%20like%20to%20inquire%20about%20a%2090-minute%20Phronisi%20Briefing%20for%20our%20institution.%0A%0AOrganisation%3A%0AAudience%2Fcohort%3A%0APreferred%20delivery%20window%3A%0ATopic%20focus%20(AI%20fluency%20%2F%20redaction%20%2F%20working%20papers%20%2F%20other)%3A%0A%0AThank%20you%2C%0A">
+      <a class="cta-card" href="#inquire">
         <div class="cta-eyebrow">CTA 02 · Briefing</div>
         <h3>Inquire about a <em>90-minute</em> Briefing.</h3>
         <p>For institutional cohorts and senior leadership teams. AI fluency, redaction discipline, working-paper documentation.</p>
@@ -2837,6 +2837,293 @@ h1.hero-title {
       <span class="bk-item"><span class="bk-lbl">Booking</span>Q3 &mdash; Q4 2026 · 2&ndash;4 new engagements per quarter</span>
     </div>
   </div>
+</section>
+
+<!--
+  ============================================================================
+  PHRONISI.APP — INQUIRY FORM SECTION (handoff file)
+  ============================================================================
+  Self-contained section that replaces the mailto: CTAs on phronisi.app.
+  Drop this markup into the page where the current CTA section lives
+  (the "§ 14" call-to-action block). All styles are scoped under the
+  .phb- prefix and inlined below — no external dependencies, no fonts
+  loaded, no localStorage, no cookies.
+
+  The palette is expressed as CSS variables on .phb-section so the coding
+  agent can align it to the site's exact tokens in one place. Values below
+  assume the site's dark, editorial, serif-accented language:
+    - near-black ground, warm off-white ink, muted bronze accent.
+  Adjust --phb-bg / --phb-ink / --phb-accent to match the live stylesheet.
+
+  Anchor: the section carries id="inquire". Every former mailto CTA
+  becomes <a href="#inquire">…</a> (see README.md for the exact swaps).
+
+  Anti-spam (client side, mirrored server side in worker-inquiry.js):
+    1. Honeypot: hidden "website" field. Humans never see it; bots fill it.
+    2. Time-on-page: the script records load time and sends elapsed ms.
+       Submissions under 3 seconds are rejected (bots submit instantly).
+       Client-supplied, therefore spoofable — it is a tripwire, not a wall.
+  ============================================================================
+-->
+<section class="phb-section" id="inquire" aria-labelledby="phb-heading">
+  <style>
+    .phb-section {
+      /* ---- palette: align these to the site's tokens ---- */
+      --phb-bg: var(--ink, #0e0e10);          /* section ground (near-black) */
+      --phb-surface: var(--ink-2, #16161a);   /* input ground */
+      --phb-ink: var(--cream, #ece9e2);       /* primary text (warm off-white) */
+      --phb-muted: var(--mute, #8f8c85);      /* labels, secondary text */
+      --phb-line: var(--line, #2c2c31);       /* rules and borders */
+      --phb-accent: var(--gold, #b0906b);     /* gold accent — links, focus, marker */
+      --phb-error: var(--rust, #c96f5e);
+      --phb-ok: #8faa8b;
+      --phb-serif: 'Fraunces', Georgia, "Times New Roman", serif;
+      --phb-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+      background: var(--phb-bg);
+      color: var(--phb-ink);
+      font-family: var(--phb-sans);
+      padding: 5rem 1.5rem;
+    }
+    .phb-inner { max-width: 640px; margin: 0 auto; }
+    .phb-kicker {
+      font-family: var(--phb-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--phb-accent);
+      margin: 0 0 1rem;
+    }
+    .phb-heading {
+      font-family: var(--phb-serif);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      line-height: 1.25;
+      margin: 0 0 0.75rem;
+    }
+    .phb-sub {
+      color: var(--phb-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0 0 2.5rem;
+      max-width: 46ch;
+    }
+    .phb-form { display: grid; gap: 1.4rem; }
+    .phb-field { display: grid; gap: 0.45rem; }
+    .phb-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--phb-muted);
+    }
+    .phb-input, .phb-select, .phb-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--phb-surface);
+      color: var(--phb-ink);
+      border: 1px solid var(--phb-line);
+      border-radius: 2px;
+      padding: 0.75rem 0.9rem;
+      font-family: var(--phb-sans);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .phb-input:focus, .phb-select:focus, .phb-textarea:focus {
+      outline: none;
+      border-color: var(--phb-accent);
+    }
+    .phb-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238f8c85'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.9rem center;
+      padding-right: 2.2rem;
+    }
+    .phb-textarea { min-height: 8rem; resize: vertical; }
+    /* Honeypot: visually removed but present in the accessibility-hidden DOM.
+       aria-hidden + tabindex=-1 keep it out of screen readers and tab order. */
+    .phb-hp {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px; height: 1px;
+      overflow: hidden;
+    }
+    .phb-submit {
+      justify-self: start;
+      font-family: var(--phb-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--phb-ink);
+      background: transparent;
+      border: 1px solid var(--phb-accent);
+      border-radius: 2px;
+      padding: 0.85rem 1.6rem;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .phb-submit:hover, .phb-submit:focus-visible {
+      background: var(--phb-accent);
+      color: var(--phb-bg);
+      outline: none;
+    }
+    .phb-submit[disabled] { opacity: 0.55; cursor: default; }
+    .phb-status {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0;
+      min-height: 1.4em;
+    }
+    .phb-status[data-state="ok"] {
+      color: var(--phb-ok);
+      font-family: var(--phb-serif);
+      font-size: 1.05rem;
+    }
+    .phb-status[data-state="error"] { color: var(--phb-error); }
+    .phb-note {
+      color: var(--phb-muted);
+      font-size: 0.8rem;
+      margin: 0.5rem 0 0;
+    }
+  </style>
+
+  <div class="phb-inner">
+    <p class="phb-kicker">§ Begin</p>
+    <h2 class="phb-heading" id="phb-heading">Request a conversation</h2>
+    <p class="phb-sub">
+      Outline what you are working on and which format fits. Arthur reads
+      every request himself and replies within one business day.
+    </p>
+
+    <form class="phb-form" id="phb-form" novalidate>
+      <div class="phb-field">
+        <label class="phb-label" for="phb-name">Name</label>
+        <input class="phb-input" id="phb-name" name="name" type="text"
+               autocomplete="name" required maxlength="200">
+      </div>
+
+      <div class="phb-field">
+        <label class="phb-label" for="phb-email">Email</label>
+        <input class="phb-input" id="phb-email" name="email" type="email"
+               autocomplete="email" required maxlength="254">
+      </div>
+
+      <div class="phb-field">
+        <label class="phb-label" for="phb-org">Organisation</label>
+        <input class="phb-input" id="phb-org" name="organisation" type="text"
+               autocomplete="organization" maxlength="200">
+      </div>
+
+      <div class="phb-field">
+        <label class="phb-label" for="phb-format">Which format?</label>
+        <select class="phb-select" id="phb-format" name="format" required>
+          <option value="" selected disabled>Select a format</option>
+          <option>Diagnostic Call — $1,500 CAD</option>
+          <option>The Briefing</option>
+          <option>The Course</option>
+          <option>The Sprint</option>
+          <option>The Advisory</option>
+          <option>The Keynote</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="phb-field">
+        <label class="phb-label" for="phb-message">What are you working on?</label>
+        <textarea class="phb-textarea" id="phb-message" name="message"
+                  required maxlength="4000"></textarea>
+      </div>
+
+      <!-- Honeypot — leave empty. Bots that auto-fill every field trip it. -->
+      <div class="phb-hp" aria-hidden="true">
+        <label for="phb-website">Website</label>
+        <input id="phb-website" name="website" type="text"
+               tabindex="-1" autocomplete="off">
+      </div>
+
+      <button class="phb-submit" type="submit" id="phb-submit">
+        Request a conversation &#8594;
+      </button>
+
+      <p class="phb-status" id="phb-status" role="status" aria-live="polite"></p>
+      <p class="phb-note">Prefer email? arthur@phronisi.app</p>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+      // Time-on-page baseline. Sent to the worker as elapsed milliseconds;
+      // both this script and the worker reject anything under 3000 ms.
+      var loadedAt = Date.now();
+
+      var form = document.getElementById("phb-form");
+      var status = document.getElementById("phb-status");
+      var submit = document.getElementById("phb-submit");
+
+      function setStatus(state, text) {
+        status.dataset.state = state || "";
+        status.textContent = text || "";
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Native validation (required, email type, maxlength).
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var elapsed = Date.now() - loadedAt;
+        if (elapsed < 3000) {
+          // Almost certainly automation; a person cannot read and complete
+          // the form in under three seconds. Fail quietly but visibly.
+          setStatus("error", "Please review your details and try again.");
+          return;
+        }
+
+        var payload = {
+          name: form.elements.name.value.trim(),
+          email: form.elements.email.value.trim(),
+          organisation: form.elements.organisation.value.trim(),
+          format: form.elements.format.value,
+          message: form.elements.message.value.trim(),
+          website: form.elements.website.value, // honeypot — should be ""
+          elapsed: elapsed
+        };
+
+        submit.disabled = true;
+        setStatus("", "Sending…");
+
+        // Cross-origin on purpose: phronisi.app is served by GitHub Pages,
+        // so the endpoint lives on the cockpit Cloudflare Pages project,
+        // which allowlists this origin for CORS.
+        fetch("https://cockpit.phronisi.app/api/inquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            if (!data || data.ok !== true) throw new Error("Unexpected response");
+            form.hidden = true;
+            setStatus("ok", "Received — Arthur replies within one business day.");
+            // Move the status outside the hidden form so it stays visible.
+            form.parentNode.appendChild(status);
+          })
+          .catch(function () {
+            submit.disabled = false;
+            setStatus("error",
+              "Something went wrong sending your request. Please try again, " +
+              "or email arthur@phronisi.app directly.");
+          });
+      });
+    })();
+  </script>
 </section>
 
 <!-- ============ FOOTER ============ -->
